@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulf War - Scars Of Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+    <body id="body" data-page="gulfWar"> 
+
+        <div class="topnav">
+    <!-- WARS linkini dropdown ile değiştiriyoruz -->
+            <div class="nav-item dropdown">
+                <button class="dropbtn">
+                    <i class="fa fa-crosshairs"></i>
+                    WARS
+                </button>
+                <div class="dropdown-content">
+                    <a href="gulf-war.html">Gulf War (1990-1991)</a>
+                    <a href="afghan-war.html">Afghan War (2001-2021)</a>
+                    <a href="iraq--war.html">Iraq War (2003-2011)</a>
+                    <a href="saudi-arabia-yemen-war.html">Saudi Arabia-Yemen War (2015-2023)</a>
+                    <a href="first-intifada.html">First Intifada (1987-1993)</a>
+                    <a href="second-intifada.html">Second Intifada (2000-2005)</a>
+                    <a href="gaza-war.html">Gaza War (2008-2009)</a>
+                    <a href="current-gaza-conflict.html">Current Gaza Conflict (2012-2023)</a>
+                    <a href="georgia-intervention.html">Russian Intervention in Georgia (2008)</a>
+                    <a href="nagorno-karabakh-war.html">Nagorno-Karabakh War (2020)</a>
+                    <a href="kosovo-war.html">Kosovo War (1998-1999)</a>
+                    <a href="india-pakistan-conflicts.html">India-Pakistan Border Conflicts (2019)</a>
+                    <a href="china-india-border.html">China-India Border Conflict (2020-2023)</a>
+                    <a href="ethiopia-sudan-border.html">Ethiopia-Sudan Border Conflicts (2020-2023)</a>
+                    <a href="russia-crimea-war.html">Russia-Crimea War (2014)</a>
+                    <a href="russia-ukraine-war.html">Russia-Ukraine War (2022-2023)</a>
+             </div>
+             </div>
+             
+        <a class="active" href="index.html"><i class="fa fa-shield"></i> SCARS OF WARS </a>
+        <a href="aboutus.html"><i class="fa fa-leaf"></i> ABOUT US</a> 
+
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/ybsbakircayedu/" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://x.com/ybs_bakircayedu" target="_blank" class="fa fa-twitter"></a>
+            <a href="https://www.instagram.com/ybs_bakircayedu/" target="_blank" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/in/bakircay-ybs/?originalSubdomain=tr" target="_blank" class="fa fa-linkedin"></a>
+            <a href="#" id="download-pdf" class="fa fa-file-pdf-o" title="Download as PDF"></a>
+           </div>
+    </div>
+    <h1 class="main-header">Gulf War</h1>
+
+    <!-- Main Content -->
+    <div class="war-content">
+        <!-- War Header -->
+        <div class="war-header">
+            
+            <div class="war-main-content">
+                <div class="war-text">
+                    <h2 style="text-align: right; font-size: 28px;   font-family: 'Cinzel', sans-serif;">PROGRESSION OF THE WAR</h2>                   
+                    <p>The Gulf War, which began in August 1990, was triggered by Iraq’s invasion of Kuwait. Led by Saddam Hussein, Iraq justified its actions by accusing Kuwait of overproducing oil and stealing Iraqi oil reserves through slant drilling. The invasion shocked the international community, as Iraq's aggression posed a direct threat to regional stability and global oil supplies. The United Nations condemned the invasion and imposed economic sanctions on Iraq, demanding its immediate withdrawal. When diplomatic efforts failed, a U.S.-led coalition of 39 countries launched a military operation to liberate Kuwait.</p>
+                    <p>The war began with Operation Desert Storm in January 1991, a massive air campaign targeting Iraqi forces and infrastructure. The coalition utilized advanced military technology, ensuring air superiority and minimizing their own casualties. This was followed by a swift ground offensive that forced Iraqi troops to retreat from Kuwait in just 100 hours. Despite Iraq's attempts to slow the coalition's advance by setting Kuwaiti oil fields ablaze, the coalition achieved a decisive victory.</p>
+                    <p>The Gulf War ended in February 1991 with Kuwait’s liberation, but the conflict had lasting consequences. While Saddam Hussein's regime was weakened, he remained in power, and Iraq faced crippling economic sanctions. The war also underscored the complexities of Middle Eastern geopolitics, as regional tensions persisted, setting the stage for future conflicts in the Gulf region.</p>
+                </div>
+                <img src="kunye_2/gulf.jpg" alt="Gulf War Künye">
+            </div>
+        </div>
+
+        <!-- Impact Boxes -->
+        <div class="impact-boxes">
+            <!-- Structural Damage Box -->
+            <div class="impact-box structural-damage">
+                <h2>Structural Damage</h2>
+                <div class="city-selector">
+                    <select id="citySelect">
+                        <option value="">Select a City</option>
+                        <option value="kuwait">Kuwait - Kuwait City</option>
+                        <option value="basra">Iraq - Basra</option>
+                        <option value="riyadh">Saudi Arabia - Riyadh</option>
+                    </select>
+                    <!-- Varsayılan Görsel BURAYA-->
+<div class="city-image" id="cityImageContainer">
+    <img id="cityImage" src="images/kuwait_gu╠êncel.jpg" alt="City Preview">
+</div> 
+                </div>
+                <div class="slider-wrapper">
+                    <!-- Default Message -->
+                    <div class="default-message">
+                        Please select a city to see the impact
+                    </div>
+                    <div class="city-info-box"></div>
+
+                    <!-- Kuwait City Slider -->
+                    <div class="container slider-kuwait" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/gulf-war/kuwait/GULFWAR_KUWAITCITY_PRE.jpeg" alt="Kuwait City Before Gulf War">
+                                <div class="label label-before">Before War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/gulf-war/kuwait/GULFWAR_KUWAITCITY_POST.jpeg" alt="Kuwait City After Gulf War">
+                                <div class="label label-after">After War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Basra Slider -->
+                    <div class="container slider-basra" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/gulf-war/basra/GULFWAR_BASRA_PRE.jpg" alt="Basra Before Gulf War">
+                                <div class="label label-before">Before War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/gulf-war/basra/GULFWAR_BASRA_POST.jpg" alt="Basra After Gulf War">
+                                <div class="label label-after">After War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Riyadh Slider -->
+                    <div class="container slider-riyadh" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/gulf-war/riyadh/GULFWAR_RIYADH_PRE.jpeg" alt="Riyadh Before Gulf War">
+                                <div class="label label-before">Before War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/gulf-war/riyadh/GULFWAR_RIYADH_POST.jpeg" alt="Riyadh After Gulf War">
+                                <div class="label label-after">After War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Casualties Box -->
+            <div class="impact-box casualties">
+                <h2>Environmental Damage</h2>
+                <div class="casualties-content">
+                    <select id="casualtiesSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="population">Population</option>
+                        <option value="migration">Migration</option>
+                        <option value="median_age">Median Age</option>
+                        <option value="life_expectancy">Life Expectancy</option>
+                        <option value="human_rights_score">Human Rights Score</option>
+                        <option value="female_population_percent">Female Population Percent</option>
+                        <option value="death_rate">Death Rate</option>
+                        <option value="birth_rate">Birth Rate</option>
+                    </select>
+                     <!-- Görseli kapsayan div -->
+        <div class="environmental-image-container">
+            <img id="environmentalImage" src="images/çevre.jpg" alt="Environmental Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+        </div>
+                    <canvas id="casualtiesChart"></canvas>
+                    <p class="chart-note casualties-note"></p>
+                </div>
+            </div>
+            
+            <!-- Economic Impact Box -->
+            <div class="impact-box economic">
+                <h2>Economic Damage</h2>
+                <div class="economic-content">
+                    <select id="economicSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="gdp">GDP</option>
+                        <option value="gni">GNI</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="exchange_rate">Exchange Rate</option>
+                        <option value="inflation_rate">Inflation Rate</option>
+                    </select>
+                    <div class="economic-image-container">
+                        <img id="economicImage" src="images/ekonomik.webp" alt="Economic Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+                    </div>
+                    <canvas id="economicChart" style="height:400px; width:100%;"></canvas>
+                    <p id="economicNote" class="chart-note"></p>  <!-- Yeni eklenen satır -->
+                </div>
+            </div>
+            <a href="scars_of_wars_project-compressed-converted.html" target="_blank" class="methodology-link">*Methodology</a>
+        </div>
+        </div>
+    </div>
+ <!-- Scripts -->
+ <script src="script.js"></script>
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const citySelect = document.getElementById("citySelect"); // Şehir seçim kutusu
+        const cityImageContainer = document.getElementById("cityImageContainer"); // Varsayılan görselin bulunduğu div
+        const sliders = document.querySelectorAll(".container"); // Tüm slider'lar
+    
+        // Sliderları gizlemek için yardımcı fonksiyon
+        function hideAllSliders() {
+            sliders.forEach((slider) => {
+                slider.style.display = "none"; // Tüm slider'ları gizle
+            });
+        }
+    
+        // Şehir değişimi sırasında çalışacak olay
+        citySelect.addEventListener("change", function () {
+            const selectedCity = citySelect.value.trim(); // Seçilen şehri al ve boşlukları temizle
+    
+            if (selectedCity === "") {
+                // Eğer şehir seçilmediyse
+                cityImageContainer.style.display = "block"; // Varsayılan görseli göster
+                hideAllSliders(); // Slider'ları gizle
+            } else {
+                // Şehir seçildiyse
+                cityImageContainer.style.display = "none"; // Varsayılan görseli gizle
+                hideAllSliders(); // Tüm slider'ları önce gizle
+    
+                const activeSlider = document.querySelector(`.slider-${selectedCity}`); // İlgili slider'ı bul
+                if (activeSlider) {
+                    activeSlider.style.display = "block"; // İlgili slider'ı göster
+                } else {
+                    console.error(`Slider for city "${selectedCity}" not found!`); // Eğer slider yoksa konsolda hata göster
+                }
+            }
+        });
+    
+        // Sayfa yüklendiğinde varsayılan görseli göster ve slider'ları gizle
+        cityImageContainer.style.display = "block";
+        hideAllSliders();
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const downloadBtn = document.getElementById('download-pdf');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Target the specific content for the PDF
+                const content = document.querySelector('.war-content');
+                const { jsPDF } = window.jspdf;
+
+                // Generate the PDF using html2canvas
+                html2canvas(content, { scale: 2 }).then(canvas => {
+                    const pdf = new jsPDF('p', 'mm', 'a4');
+                    const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+                    const imgWidth = 210; // A4 width in mm
+                    const pageHeight = 297; // A4 height in mm
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                    let position = 0;
+
+                    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+
+                    // Add more pages if the content overflows
+                    if (imgHeight > pageHeight) {
+                        let remainingHeight = imgHeight - pageHeight;
+                        while (remainingHeight > 0) {
+                            position = position - pageHeight;
+                            pdf.addPage();
+                            pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                            remainingHeight -= pageHeight;
+                        }
+                    }
+
+                    pdf.save('Gulf_War.pdf');
+                });
+            });
+        }
+    });
+//GRAFİK
+document.addEventListener("DOMContentLoaded", function () {
+    const casualtiesSelect = document.getElementById("casualtiesSelect");
+    const chartCanvas = document.getElementById("casualtiesChart");
+    const chartNote = document.querySelector(".casualties-note");
+    const environmentalImage = document.getElementById("environmentalImage");
+
+    let myChart = null;
+
+    // Başlangıçta görseli göster
+    environmentalImage.style.display = "block";
+    chartCanvas.style.display = "none";
+    chartNote.style.display = "none";
+
+    casualtiesSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        let chartData = {
+            labels: [1989, 1991, 1996],
+            datasets: []
+        };
+
+        // Seçim yapılmadığında veya "Select an indicator" olduğunda görseli göster
+        if (selectedValue === "") {
+            environmentalImage.style.display = "block";
+            chartCanvas.style.display = "none";
+            chartNote.style.display = "none";
+        } else {
+            environmentalImage.style.display = "none";
+            chartCanvas.style.display = "block";
+            chartNote.style.display = "block";
+
+            // Veri setlerini seçilen değere göre tanımla
+            if (selectedValue === "population") {
+                chartData.datasets = [
+                    {
+                        label: 'Iraq',
+                        data: [17.3, 13.5, 21.5],
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Kuwait',
+                        data: [2.2, 1.3, 1.7],
+                        borderColor: 'rgb(54, 162, 235)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Saudi Arabia',
+                        data: [10.1, 11.6, 13.8],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }
+                ];
+                chartNote.innerText = "Population data is shown in millions.";
+            } else if (selectedValue === "migration") {
+                chartData.datasets = [
+                    {
+                        label: 'Iraq',
+                        data: [19392, -95155, 14652],
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Kuwait',
+                        data: [34643, 460628, 17914],
+                        borderColor: 'rgb(54, 162, 235)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Saudi Arabia',
+                        data: [159273, 162857, 160532],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }
+                ];
+                chartNote.innerText = "Annual net migration (positive for inflow, negative for outflow).";
+            } else if (selectedValue === "median_age") {
+                chartData.datasets = [
+                    {
+                        label: 'Iraq',
+                        data: [15.9, 16.0, 16.5],
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Kuwait',
+                        data: [22.2, 22.5, 24.6],
+                        borderColor: 'rgb(54, 162, 235)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Saudi Arabia',
+                        data: [17.9, 18.1, 18.9],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }
+                ];
+                chartNote.innerText = "Median age data is shown in years.";
+            } else if (selectedValue === "life_expectancy") {
+                chartData.datasets = [
+                    {
+                        label: 'Iraq',
+                        data: [58.2, 62.5, 66.3],
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Kuwait',
+                        data: [67.1, 69.5, 72.3],
+                        borderColor: 'rgb(54, 162, 235)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Saudi Arabia',
+                        data: [70.4, 72.8, 74.5],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }
+                ];
+                chartNote.innerText = "Life expectancy is shown in years.";
+            } else if (selectedValue === "human_rights_score") {
+                chartData.datasets = [
+                    {
+                        label: 'Iraq',
+                        data: [0.11, 0.11, 0.12],
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Kuwait',
+                        data: [0.55, 0.58, 0.60],
+                        borderColor: 'rgb(54, 162, 235)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Saudi Arabia',
+                        data: [0.45, 0.46, 0.47],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }
+                ];
+                chartNote.innerText = "Human Rights Index (0-1 scale, higher is better).";
+            } else if (selectedValue === "female_population_percent") {
+                chartData.datasets = [
+                    {
+                        label: 'Iraq',
+                        data: [50.68, 50.68, 50.44],
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Kuwait',
+                        data: [48.75, 48.90, 49.05],
+                        borderColor: 'rgb(54, 162, 235)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Saudi Arabia',
+                        data: [49.2, 49.3, 49.5],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }
+                ];
+                chartNote.innerText = "Percentage of females in the total population.";
+            } else if (selectedValue === "death_rate") {
+                chartData.datasets = [
+                    {
+                        label: 'Iraq',
+                        data: [11.0, 8.9, 7.1],
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Kuwait',
+                        data: [5.0, 4.7, 4.5],
+                        borderColor: 'rgb(54, 162, 235)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Saudi Arabia',
+                        data: [4.5, 4.4, 4.3],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }
+                ];
+                chartNote.innerText = "Number of deaths per 1,000 people annually.";
+            } else if (selectedValue === "birth_rate") {
+                chartData.datasets = [
+                    {
+                        label: 'Iraq',
+                        data: [39.635, 39.957, 37.504],
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Kuwait',
+                        data: [24.525, 18.769, 25.043],
+                        borderColor: 'rgb(54, 162, 235)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    },
+                    {
+                        label: 'Saudi Arabia',
+                        data: [39.316, 36.709, 31.223],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }
+                ];
+                chartNote.innerText = "Number of births per 1,000 people annually.";
+            }
+
+            // Grafiği oluştur
+            myChart = new Chart(chartCanvas, {
+                type: 'line',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.dataset.label + ': ';
+                                    if (selectedValue === 'population') {
+                                        return label + context.parsed.y + ' Million';
+                                    }
+                                    return label + context.parsed.y;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            position: 'left',
+                            grid: {
+                                drawBorder: false
+                            },
+                            ticks: {
+                                padding: 10
+                            }
+                        },
+                        x: {
+                            grid: {
+                                drawBorder: false
+                            },
+                            ticks: {
+                                padding: 10
+                            }
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 25,
+                            bottom: 20,
+                            right: 15,
+                            top: 10
+                        }
+                    }
+                }
+            });
+        }
+    });
+});
+
+//ECONOMIC
+document.addEventListener("DOMContentLoaded", function () {
+    const economicSelect = document.getElementById("economicSelect");
+    const economicChartCanvas = document.getElementById("economicChart");
+    const economicNote = document.getElementById("economicNote");
+    const economicImage = document.getElementById("economicImage");
+
+    let economicChart = null;
+
+    // Her ülke için farklı renkler
+    const iraqColor = "rgb(255, 99, 132)";
+    const kuwaitColor = "rgb(54, 162, 235)";
+    const saudiArabiaColor = "rgb(75, 192, 192)";
+
+    economicSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        // Eğer mevcut bir grafik varsa yok et
+        if (economicChart) {
+            economicChart.destroy();
+        }
+
+        if (selectedValue === "") {
+            economicImage.style.display = "block";
+            economicChartCanvas.style.display = "none";
+            economicNote.style.display = "none";
+            return;
+        } else {
+            economicImage.style.display = "none";
+            economicChartCanvas.style.display = "block";
+            economicNote.style.display = "block";
+        }
+
+        let chartData = {
+            labels: [1989, 1991, 1996],
+            datasets: []
+        };
+
+        if (selectedValue === "gdp") {
+            chartData.datasets = [
+                {
+                    label: "Iraq",
+                    data: [3774, 2399, 4275],
+                    borderColor: iraqColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Kuwait",
+                    data: [21812.34, 42617.61, 72486.53],
+                    borderColor: kuwaitColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Saudi Arabia",
+                    data: [43800.344, 7543.453, 42449.992],
+                    borderColor: saudiArabiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "GDP data is shown in millions of USD.";
+        } else if (selectedValue === "gni") {
+            chartData.datasets = [
+                {
+                    label: "Iraq",
+                    data: [3640, 2399.4275, 4386.1074],
+                    borderColor: iraqColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Kuwait",
+                    data: [19456.05, 42617.61, 72486.53],
+                    borderColor: kuwaitColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Saudi Arabia",
+                    data: [43800.344, 47543.453, 42449.992],
+                    borderColor: saudiArabiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "GNI data is shown in millions of USD.";
+        } else if (selectedValue === "manufacturing") {
+            chartData.datasets = [
+                {
+                    label: "Iraq",
+                    data: [13.201751, 3.1989372, 1.0050155],
+                    borderColor: iraqColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Kuwait",
+                    data: [10.95, 10.2, 11.677679],
+                    borderColor: kuwaitColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Saudi Arabia",
+                    data: [8.48668, 8.2825575, 9.488249],
+                    borderColor: saudiArabiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Production data are shown as a percentage of GDP.";
+        } else if (selectedValue === "exchange_rate") {
+            chartData.datasets = [
+                {
+                    label: "Iraq",
+                    data: [2002.385586, 2002.385586, 2002.387212],
+                    borderColor: iraqColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Kuwait",
+                    data: [0.293779417, 0.284268577, 0.299408563],
+                    borderColor: kuwaitColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Saudi Arabia",
+                    data: [3.75, 3.75, 3.75],
+                    borderColor: saudiArabiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Exchange rate is shown in USD equivalent.";
+        } else if (selectedValue === "inflation_rate") {
+            chartData.datasets = [
+                {
+                    label: "Iraq",
+                    data: [6.8, 180.95238, -16.117325],
+                    borderColor: iraqColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Kuwait",
+                    data: [3.3420336, 9.058188, 3.5539856],
+                    borderColor: kuwaitColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Saudi Arabia",
+                    data: [1.0326449, 4.861111, 1.2220699],
+                    borderColor: saudiArabiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Inflation rate is shown as annual percentage change.";
+        }
+
+        economicChart = new Chart(economicChartCanvas, {
+            type: "line",
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: {
+                            padding: 20
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 10
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 10
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 25,
+                        bottom: 20,
+                        right: 15,
+                        top: 10
+                    }
+                }
+            }
+        });
+    });
+
+    economicImage.style.display = "block";
+    economicChartCanvas.style.display = "none";
+    economicNote.style.display = "none";
+});
+</script>
+<script src="your-script-file.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const impactBoxes = document.querySelector('.impact-boxes');
+        const warHeader = document.querySelector('.war-header');
+        const socialIcons = document.querySelector('.social-icons'); // Sosyal medya ikonları
+        const warText = document.querySelector('.war-text'); // Yazının bulunduğu ana alan
+    
+        if (impactBoxes && warHeader) {
+            // impact-boxes'ı war-header'ın üstüne taşı
+            warHeader.parentNode.insertBefore(impactBoxes, warHeader);
+        }
+
+        if (socialIcons && warText) {
+            // Sosyal medya ikonlarını war-text'in altına taşı
+            warText.parentNode.insertBefore(socialIcons, warText.nextSibling);
+        }
+    });
+</script>
+<div class="index-footer">
+    <p>© 2024 Scars of Wars - All Rights Reserved</p>
+  </div>
+</body>
+</html>

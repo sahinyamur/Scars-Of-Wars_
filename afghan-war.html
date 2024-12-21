@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afghan War- Scars Of Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/recharts/umd/Recharts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <body id="body" data-page="afghanWar"> 
+        
+    <div class="topnav">
+        <!-- WARS linkini dropdown ile değiştiriyoruz -->
+        <div class="nav-item dropdown">
+            <button class="dropbtn">
+                <i class="fa fa-crosshairs"></i>
+                WARS
+            </button>
+            <div class="dropdown-content">
+                <a href="gulf-war.html">Gulf War (1990-1991)</a>
+                <a href="afghan-war.html">Afghan War (2001-2021)</a>
+                <a href="iraq--war.html">Iraq War (2003-2011)</a>
+                <a href="saudi-arabia-yemen-war.html">Saudi Arabia-Yemen War (2015-2023)</a>
+                <a href="first-intifada.html">First Intifada (1987-1993)</a>
+                <a href="second-intifada.html">Second Intifada (2000-2005)</a>
+                <a href="gaza-war.html">Gaza War (2008-2009)</a>
+                <a href="current-gaza-conflict.html">Current Gaza Conflict (2012-2023)</a>
+                <a href="georgia-intervention.html">Russian Intervention in Georgia (2008)</a>
+                <a href="nagorno-karabakh-war.html">Nagorno-Karabakh War (2020)</a>
+                <a href="kosovo-war.html">Kosovo War (1998-1999)</a>
+                <a href="india-pakistan-conflicts.html">India-Pakistan Border Conflicts (2019)</a>
+                <a href="china-india-border.html">China-India Border Conflict (2020-2023)</a>
+                <a href="ethiopia-sudan-border.html">Ethiopia-Sudan Border Conflicts (2020-2023)</a>
+                <a href="russia-crimea-war.html">Russia-Crimea War (2014)</a>
+                <a href="russia-ukraine-war.html">Russia-Ukraine War (2022-2023)</a>
+            </div>
+        </div>
+
+        <a class="active" href="index.html"><i class="fa fa-shield"></i> SCARS OF WARS </a>
+        <a href="aboutus.html"><i class="fa fa-leaf"></i> ABOUT US</a>
+
+     <!-- Social Media Icons -->
+     <div class="social-icons">
+        <a href="https://www.facebook.com/ybsbakircayedu/" target="_blank" class="fa fa-facebook"></a>
+        <a href="https://x.com/ybs_bakircayedu" target="_blank" class="fa fa-twitter"></a>
+        <a href="https://www.instagram.com/ybs_bakircayedu/" target="_blank" class="fa fa-instagram"></a>
+        <a href="https://www.linkedin.com/in/bakircay-ybs/?originalSubdomain=tr" target="_blank" class="fa fa-linkedin"></a>
+        <a href="#" id="download-pdf" class="fa fa-file-pdf-o" title="Download as PDF"></a>
+       </div>
+</div>
+<h1 class="main-header">Afghan War</h1>
+
+    <!-- Main Content -->
+    <div class="war-content">
+        <!-- War Header -->
+        <div class="war-header">
+            <div class="war-main-content">
+                <div class="war-text">
+                    <h2 style="text-align: right; font-size: 28px;   font-family: 'Cinzel', sans-serif;">PROGRESSION OF THE WAR</h2>                   
+                    <p>The Afghan War was initiated by the United States and its allies in October 2001 in response to the September 11 terrorist attacks. The primary goal was to dismantle Al-Qaeda and remove the Taliban regime, which had provided a safe haven for the terrorist group. The invasion began with airstrikes and special forces operations that quickly toppled the Taliban government. Kabul fell within weeks, and a new interim government was established under Hamid Karzai.</p>
+                    <p>However, the war soon transitioned into a prolonged insurgency as the Taliban regrouped and launched guerrilla attacks across the country. The conflict was marked by a deadly cycle of violence, civilian casualties, and corruption within the Afghan government. Efforts to rebuild Afghanistan’s infrastructure and institutions were undermined by widespread insecurity and the failure to address local grievances. Over the years, NATO forces struggled to maintain control, even as billions of dollars were invested in training Afghan security forces.</p>
+                    <p>In 2021, after nearly two decades of fighting, U.S. and NATO troops withdrew from Afghanistan, leading to the swift collapse of the Afghan government and the Taliban’s return to power. The war, which cost countless lives and displaced millions, left Afghanistan in political and economic disarray. For many, it symbolized the limits of foreign intervention and the challenges of nation-building in deeply divided societies.</p>
+                </div>
+                <img src="kunye_2/afghan.jpg" alt="Afghan War Künye">
+            </div>
+        </div>
+
+        <!-- Impact Boxes -->
+        <div class="impact-boxes">
+            <!-- Structural Damage Box -->
+            <div class="impact-box structural-damage">
+                <h2>Structural Damage</h2>
+                <div class="city-selector">
+                    <select id="citySelect">
+                        <option value="">Select a City</option>
+                        <option value="kabul">Afghanistan - Kabul</option>
+                        <option value="new-york">USA - New York</option>
+                    </select>
+                     <!-- Varsayılan Görsel BURAYA-->
+<div class="city-image" id="cityImageContainer">
+    <img id="cityImage" src="images/abd_afghn_twintowers_gu╠êncel.jpg" alt="City Preview">
+</div>      
+                </div>
+                <div class="slider-wrapper">
+                    <!-- Default Message -->
+                    <div class="default-message">
+                        Please select a city to see the impact
+                    </div>
+                    <div class="city-info-box"></div>
+
+                    <!-- Kabul Slider -->
+                    <div class="container slider-kabul" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/afghan-war/kabul/AFGHANWAR_KABUL_PRE.jpeg" alt="Kabul Before">
+                                <div class="label label-before">Before Afghan War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/afghan-war/kabul/AFGHANWAR_KABUL_POST.jpeg" alt="Kabul After">
+                                <div class="label label-after">After Afghan War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- New York Slider -->
+                    <div class="container slider-new-york" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/afghan-war/new-york/AFGHANWAR_NEWYORK_PRE.jpg" alt="New York Before">
+                                <div class="label label-before">Before Afghan War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/afghan-war/new-york/AFGHANWAR_NEWYORK_POST.jpg" alt="New York After">
+                                <div class="label label-after">After Afghan War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <!-- Casualties Box -->
+<div class="impact-box casualties">
+    <h2>Environmental Damage</h2>
+    <div class="casualties-content">
+        <select id="casualtiesSelect">
+            <option value="">Select an indicator</option>
+            <option value="population">Population</option>
+            <option value="migration">Migration</option>
+            <option value="median_age">Median Age</option>
+            <option value="life_expectancy">Life Expectancy</option>
+            <option value="human_rights_score">Human Rights Score</option>
+            <option value="female_population_percent">Female Population Percent</option>
+            <option value="death_rate">Death Rate</option>
+            <option value="birth_rate">Birth Rate</option>
+        </select>
+        <!-- Görseli kapsayan div -->
+        <div class="environmental-image-container">
+            <img id="environmentalImage" src="images/çevre.jpg" alt="Environmental Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+        </div>
+        <!-- Grafik -->
+        <canvas id="casualtiesChart" style="display: none;"></canvas>
+        <!-- Not -->
+        <p class="chart-note casualties-note" style="display: none;"></p>
+    </div>
+</div>
+            
+            <!-- Economic Impact Box -->
+            <div class="impact-box economic">
+                <h2>Economic Damage</h2>
+                <div class="economic-content">
+                    <select id="economicSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="gdp">GDP</option>
+                        <option value="gni">GNI</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="exchange_rate">Exchange Rate</option>
+                        <option value="inflation_rate">Inflation Rate</option>
+                    </select>
+                    <div class="economic-image-container">
+                        <img id="economicImage" src="images/ekonomik.webp" alt="Economic Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+                    </div>
+                    <canvas id="economicChart" style="height:400px; width:100%;"></canvas>
+                    <p id="economicNote" class="chart-note"></p>  <!-- Yeni eklenen satır -->
+                </div>
+            </div>
+            <a href="scars_of_wars_project-compressed-converted.html" target="_blank" class="methodology-link">*Methodology</a>
+        </div>
+        </div>
+    </div>
+ <!-- Scripts -->
+ <script src="script.js"></script>
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const citySelect = document.getElementById("citySelect"); // Şehir seçim kutusu
+        const cityImageContainer = document.getElementById("cityImageContainer"); // Varsayılan görselin bulunduğu div
+        const sliders = document.querySelectorAll(".container"); // Tüm slider'lar
+    
+        // Sliderları gizlemek için yardımcı fonksiyon
+        function hideAllSliders() {
+            sliders.forEach((slider) => {
+                slider.style.display = "none"; // Tüm slider'ları gizle
+            });
+        }
+    
+        // Şehir değişimi sırasında çalışacak olay
+        citySelect.addEventListener("change", function () {
+            const selectedCity = citySelect.value.trim(); // Seçilen şehri al ve boşlukları temizle
+    
+            if (selectedCity === "") {
+                // Eğer şehir seçilmediyse
+                cityImageContainer.style.display = "block"; // Varsayılan görseli göster
+                hideAllSliders(); // Slider'ları gizle
+            } else {
+                // Şehir seçildiyse
+                cityImageContainer.style.display = "none"; // Varsayılan görseli gizle
+                hideAllSliders(); // Tüm slider'ları önce gizle
+    
+                const activeSlider = document.querySelector(`.slider-${selectedCity}`); // İlgili slider'ı bul
+                if (activeSlider) {
+                    activeSlider.style.display = "block"; // İlgili slider'ı göster
+                } else {
+                    console.error(`Slider for city "${selectedCity}" not found!`); // Eğer slider yoksa konsolda hata göster
+                }
+            }
+        });
+    
+        // Sayfa yüklendiğinde varsayılan görseli göster ve slider'ları gizle
+        cityImageContainer.style.display = "block";
+        hideAllSliders();
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const downloadBtn = document.getElementById('download-pdf');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Target the specific content for the PDF
+                const content = document.querySelector('.war-content');
+                const { jsPDF } = window.jspdf;
+
+                // Generate the PDF using html2canvas
+                html2canvas(content, { scale: 2 }).then(canvas => {
+                    const pdf = new jsPDF('p', 'mm', 'a4');
+                    const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+                    const imgWidth = 210; // A4 width in mm
+                    const pageHeight = 297; // A4 height in mm
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                    let position = 0;
+
+                    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+
+                    // Add more pages if the content overflows
+                    if (imgHeight > pageHeight) {
+                        let remainingHeight = imgHeight - pageHeight;
+                        while (remainingHeight > 0) {
+                            position = position - pageHeight;
+                            pdf.addPage();
+                            pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                            remainingHeight -= pageHeight;
+                        }
+                    }
+
+                    pdf.save('Afghan_War.pdf');
+                });
+            });
+        }
+    });
+//GRAFİK
+document.addEventListener("DOMContentLoaded", function () {
+    const casualtiesSelect = document.getElementById("casualtiesSelect");
+    const chartCanvas = document.getElementById("casualtiesChart");
+    const chartNote = document.querySelector(".casualties-note");
+    const environmentalImage = document.getElementById("environmentalImage");
+
+    let myChart = null;
+
+    // Varsayılan durum - Görsel gösterilir
+    environmentalImage.style.display = "block";
+    chartCanvas.style.display = "none";
+    chartNote.style.display = "none";
+
+    casualtiesSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        // Mevcut grafik varsa yok et
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        if (selectedValue === "") {
+            // Görseli göster, grafik ve notları gizle
+            environmentalImage.style.display = "block";
+            chartCanvas.style.display = "none";
+            chartNote.style.display = "none";
+            return;
+        } else {
+            // Görseli gizle, grafik ve notları göster
+            environmentalImage.style.display = "none";
+            chartCanvas.style.display = "block";
+            chartNote.style.display = "block";
+        }
+
+        // Grafik verileri
+        let chartData = {
+            labels: [2000, 2001, 2022],
+            datasets: []
+        };
+
+        // Seçime göre veriler
+        if (selectedValue === "population") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [281.4, 284.2, 341.5],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [20.1, 40.5, 20.2],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            chartNote.innerText = "Population data is shown in millions.";
+        } else if (selectedValue === "migration") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [1248392, 1312455, 1319009],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [-1025973, -647402, -212872],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            chartNote.innerText = "Annual net migration (positive for inflow, negative for outflow).";
+        } else if (selectedValue === "median_age") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [34.291, 34.479, 37.72],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [13.989, 16.752, 13.926],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            chartNote.innerText = "Age data is shown in years.";
+        } else if (selectedValue === "life_expectancy") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [76.8114, 76.9285, 77.1982],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [55.2978, 61.9824, 55.7981],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            chartNote.innerText = "Life expectancy is shown in years.";
+        } else if (selectedValue === "human_rights_score") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [0.95, 0.95, 0.94],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [0.02, 0.06, 0.08],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            chartNote.innerText = "Human Rights Index (0-1 scale, higher is better).";
+        } else if (selectedValue === "female_population_percent") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [50.77, 50.75, 50.49],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [49.78, 49.51, 49.74],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            chartNote.innerText = "Percentage of females in the total population.";
+        } else if (selectedValue === "birth_rate") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [14.056, 13.826, 10.981],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [51.491, 36.045, 49.623],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            chartNote.innerText = "Number of births per 1,000 people annually.";
+        } else if (selectedValue === "death_rate") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [8.611, 8.558, 9.332],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [12.608, 5.993, 11.954],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            chartNote.innerText = "Number of deaths per 1,000 people annually.";
+        }
+
+        // Yeni grafik oluştur
+        myChart = new Chart(chartCanvas, {
+            type: 'line',
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: false },
+                    x: {}
+                }
+            }
+        });
+    });
+});
+
+//EKONOMİK
+document.addEventListener("DOMContentLoaded", function () {
+    const economicSelect = document.getElementById("economicSelect");
+    const economicChartCanvas = document.getElementById("economicChart");
+    const economicNote = document.getElementById("economicNote");
+    const economicImage = document.getElementById("economicImage"); // Görsel öğesi eklendi
+
+    let economicChart = null;
+
+    // Varsayılan durum: Görsel gösterilir
+    economicImage.style.display = "block";
+    economicChartCanvas.style.display = "none";
+    economicNote.style.display = "none";
+
+    economicSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        // Mevcut grafik varsa yok et
+        if (economicChart) {
+            economicChart.destroy();
+        }
+
+        if (selectedValue === "") {
+            // Hiçbir seçim yapılmadıysa görseli göster, grafik ve notları gizle
+            economicImage.style.display = "block";
+            economicChartCanvas.style.display = "none";
+            economicNote.style.display = "none";
+            return;
+        } else {
+            // Seçim yapıldığında görsel gizlenir, grafik ve notlar gösterilir
+            economicImage.style.display = "none";
+            economicChartCanvas.style.display = "block";
+            economicNote.style.display = "block";
+        }
+
+        // Grafik için veri seti
+        let chartData = {
+            labels: [2000, 2001, 2022],
+            datasets: []
+        };
+
+        if (selectedValue === "gdp") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [50647.934, 50679.16, 65564.94],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [1047.3427, 981.13354, 1335.2057],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            economicNote.innerText = "GDP data is shown in millions of USD.";
+        } else if (selectedValue === "gni") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [50647.934, 50679.16, 65564.94],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [1047.3427, 981.13354, 1335.2057],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            economicNote.innerText = "GNI data is shown in millions of USD.";
+        } else if (selectedValue === "manufacturing") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [15.115075, 13.91931, 10.710371],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [18.822752, 16.923866, 8.493156],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            economicNote.innerText = "Production data are shown as a percentage of GDP.";
+        } else if (selectedValue === "exchange_rate") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [1, 1, 1],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [47.35757473, 47.50001452, 76.81353644],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            economicNote.innerText = "Exchange rate is shown in USD equivalent.";
+        } else if (selectedValue === "inflation_rate") {
+            chartData.datasets = [
+                {
+                    label: 'United States',
+                    data: [3.3768573, 2.8261712, 8.0028],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Afghanistan',
+                    data: [-37.9, 3.8, 2.5],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+            ];
+            economicNote.innerText = "Inflation rate is shown as annual percentage change.";
+        }
+
+        // Grafik oluştur
+        economicChart = new Chart(economicChartCanvas, {
+            type: 'line',
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 10
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 10
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 25,
+                        bottom: 20,
+                        right: 15,
+                        top: 10
+                    }
+                }
+            }
+        });
+    });
+});
+</script>
+<script src="your-script-file.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const impactBoxes = document.querySelector('.impact-boxes');
+        const warHeader = document.querySelector('.war-header');
+        const socialIcons = document.querySelector('.social-icons'); // Sosyal medya ikonları
+        const warText = document.querySelector('.war-text'); // Yazının bulunduğu ana alan
+    
+        if (impactBoxes && warHeader) {
+            // impact-boxes'ı war-header'ın üstüne taşı
+            warHeader.parentNode.insertBefore(impactBoxes, warHeader);
+        }
+
+        if (socialIcons && warText) {
+            // Sosyal medya ikonlarını war-text'in altına taşı
+            warText.parentNode.insertBefore(socialIcons, warText.nextSibling);
+        }
+    });
+</script>
+<div class="index-footer">
+    <p>© 2024 Scars of Wars - All Rights Reserved</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russia - Crimea War - Scars Of Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <body id="body" data-page="russiaCrimeaWar"> 
+        
+    <div class="topnav">
+        <!-- WARS linkini dropdown ile değiştiriyoruz -->
+        <div class="nav-item dropdown">
+            <button class="dropbtn">
+                <i class="fa fa-crosshairs"></i>
+                WARS
+            </button>
+            <div class="dropdown-content">
+                <a href="gulf-war.html">Gulf War (1990-1991)</a>
+                <a href="afghan-war.html">Afghan War (2001-2021)</a>
+                <a href="iraq--war.html">Iraq War (2003-2011)</a>
+                <a href="saudi-arabia-yemen-war.html">Saudi Arabia-Yemen War (2015-2023)</a>
+                <a href="first-intifada.html">First Intifada (1987-1993)</a>
+                <a href="second-intifada.html">Second Intifada (2000-2005)</a>
+                <a href="gaza-war.html">Gaza War (2008-2009)</a>
+                <a href="current-gaza-conflict.html">Current Gaza Conflict (2012-2023)</a>
+                <a href="georgia-intervention.html">Russian Intervention in Georgia (2008)</a>
+                <a href="nagorno-karabakh-war.html">Nagorno-Karabakh War (2020)</a>
+                <a href="kosovo-war.html">Kosovo War (1998-1999)</a>
+                <a href="india-pakistan-conflicts.html">India-Pakistan Border Conflicts (2019)</a>
+                <a href="china-india-border.html">China-India Border Conflict (2020-2023)</a>
+                <a href="ethiopia-sudan-border.html">Ethiopia-Sudan Border Conflicts (2020-2023)</a>
+                <a href="russia-crimea-war.html">Russia-Crimea War (2014)</a>
+                <a href="russia-ukraine-war.html">Russia-Ukraine War (2022-2023)</a>
+            </div>
+        </div>
+
+        <a class="active" href="index.html"><i class="fa fa-shield"></i> SCARS OF WARS </a>
+        <a href="aboutus.html"><i class="fa fa-leaf"></i> ABOUT US</a>
+ <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/ybsbakircayedu/" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://x.com/ybs_bakircayedu" target="_blank" class="fa fa-twitter"></a>
+            <a href="https://www.instagram.com/ybs_bakircayedu/" target="_blank" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/in/bakircay-ybs/?originalSubdomain=tr" target="_blank" class="fa fa-linkedin"></a>
+            <a href="#" id="download-pdf" class="fa fa-file-pdf-o" title="Download as PDF"></a>
+           </div>
+    </div>
+    <h1 class="main-header">Russia - Crimea War</h1>
+
+    <!-- Main Content -->
+    <div class="war-content">
+        <!-- War Header -->
+        <div class="war-header">
+            <div class="war-main-content">
+                <div class="war-text">
+                    <h2 style="text-align: right; font-size: 28px;   font-family: 'Cinzel', sans-serif;">PROGRESSION OF THE WAR</h2>                   
+                    <p>The Russia-Crimea conflict in 2014 marked a significant escalation in tensions between Russia and Ukraine. Following Ukraine's Euromaidan Revolution, which ousted the pro-Russian president Viktor Yanukovych, Russia swiftly moved to annex Crimea, citing the need to protect ethnic Russians and Russian speakers in the region. Russian forces, often without insignias, took control of key infrastructure and military bases in Crimea in a matter of days.</p> 
+                    <p>A controversial referendum was held in Crimea under Russian supervision, in which the majority reportedly voted to join Russia. However, the international community widely condemned the referendum as illegitimate, citing the lack of proper oversight and the coercive military presence. In March 2014, Russia officially annexed Crimea, sparking widespread international condemnation and sanctions against Moscow.</p>
+                    <p>The annexation significantly deteriorated relations between Russia and the West, marking the beginning of a prolonged geopolitical standoff. While Russia asserts that Crimea is now part of its territory, Ukraine and most of the international community maintain that the peninsula remains legally part of Ukraine, occupied by Russia.</p>
+                </div>
+                <img src="kunye_2/russia_crimea.jpg" alt="Crimea War Künye">
+            </div>
+        </div>
+        <!-- Impact Boxes -->
+        <div class="impact-boxes">
+            <!-- Structural Damage Box -->
+            <div class="impact-box structural-damage">
+                <h2>Structural Damage</h2>
+                <div class="city-selector">
+                    <select id="citySelect">
+                        <option value="">Select a City</option>
+                        <option value="donetsk">Ukraine - Donetsk</option>
+                        <option value="russia">Russia</option>
+                    </select>
+                    <!-- Varsayılan Görsel BURAYA-->
+<div class="city-image" id="cityImageContainer">
+    <img id="cityImage" src="images/donetsk_russia_crimea_war_gu╠êncel.jpg" alt="City Preview">
+</div> 
+                </div>
+                <div class="slider-wrapper">
+                    <!-- Default Message -->
+                    <div class="default-message">
+                        Please select a city to see the impact
+                    </div>
+                    <div class="city-info-box"></div>
+
+                    <!-- Donetsk Slider -->
+                    <div class="container slider-donetsk" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/russia-crimea-war/donetsk/RUSSIACRIMEAWAR_DONETSK_PRE.jpg" alt="Donetsk Before">
+                                <div class="label label-before">Before War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/russia-crimea-war/donetsk/RUSSIACRIMEAWAR_DONETSK_POST.jpg" alt="Donetsk After">
+                                <div class="label label-after">After War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+            </div>
+
+                <!-- Casualties Box -->
+                <div class="impact-box casualties">
+                    <h2>Environmental Damage</h2>
+                    <div class="casualties-content">
+                        <select id="casualtiesSelect">
+                            <option value="">Select an indicator</option>
+                            <option value="population">Population</option>
+                            <option value="migration">Migration</option>
+                            <option value="median_age">Median Age</option>
+                            <option value="life_expectancy">Life Expectancy</option>
+                            <option value="human_rights_score">Human Rights Score</option>
+                            <option value="female_population_percent">Female Population Percent</option>
+                            <option value="death_rate">Death Rate</option>
+                            <option value="birth_rate">Birth Rate</option>
+                        </select>
+                        <img id="environmentalImage" src="images/çevre.jpg" alt="Environmental Impact Visual" style="display: none; width: 100%; max-height: 400px; margin-top: -20px;">
+                        <canvas id="casualtiesChart"></canvas>
+                        <p class="chart-note casualties-note"></p>
+                    </div>
+                </div>
+                
+                <!-- Economic Impact Box -->
+                <div class="impact-box economic">
+                    <h2>Economic Damage</h2>
+                    <div class="economic-content">
+                        <select id="economicSelect">
+                            <option value="">Select an indicator</option>
+                            <option value="gdp">GDP</option>
+                            <option value="gni">GNI</option>
+                            <option value="manufacturing">Manufacturing</option>
+                            <option value="exchange_rate">Exchange Rate</option>
+                            <option value="inflation_rate">Inflation Rate</option>
+                        </select>
+                        <div class="economic-image-container">
+                            <img id="economicImage" src="images/ekonomik.webp" alt="Economic Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+                        </div>
+                        <canvas id="economicChart" style="height:400px; width:100%;"></canvas>
+                        <p id="economicNote" class="chart-note"></p>  <!-- Yeni eklenen satır -->
+                    </div>
+                </div>
+                <a href="scars_of_wars_project-compressed-converted.html" target="_blank" class="methodology-link">*Methodology</a>
+        </div>
+            </div>
+        </div>
+
+<!-- Scripts -->
+<script src="script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const citySelect = document.getElementById("citySelect"); // Şehir seçim kutusu
+        const cityImageContainer = document.getElementById("cityImageContainer"); // Varsayılan görselin bulunduğu div
+        const sliders = document.querySelectorAll(".container"); // Tüm slider'lar
+    
+        // Sliderları gizlemek için yardımcı fonksiyon
+        function hideAllSliders() {
+            sliders.forEach((slider) => {
+                slider.style.display = "none"; // Tüm slider'ları gizle
+            });
+        }
+    
+        // Şehir değişimi sırasında çalışacak olay
+        citySelect.addEventListener("change", function () {
+            const selectedCity = citySelect.value.trim(); // Seçilen şehri al ve boşlukları temizle
+    
+            if (selectedCity === "") {
+                // Eğer şehir seçilmediyse
+                cityImageContainer.style.display = "block"; // Varsayılan görseli göster
+                hideAllSliders(); // Slider'ları gizle
+            } else {
+                // Şehir seçildiyse
+                cityImageContainer.style.display = "none"; // Varsayılan görseli gizle
+                hideAllSliders(); // Tüm slider'ları önce gizle
+    
+                const activeSlider = document.querySelector(`.slider-${selectedCity}`); // İlgili slider'ı bul
+                if (activeSlider) {
+                    activeSlider.style.display = "block"; // İlgili slider'ı göster
+                } else {
+                    console.error(`Slider for city "${selectedCity}" not found!`); // Eğer slider yoksa konsolda hata göster
+                }
+            }
+        });
+    
+        // Sayfa yüklendiğinde varsayılan görseli göster ve slider'ları gizle
+        cityImageContainer.style.display = "block";
+        hideAllSliders();
+    });
+   document.addEventListener("DOMContentLoaded", function () {
+       const downloadBtn = document.getElementById('download-pdf');
+       if (downloadBtn) {
+           downloadBtn.addEventListener('click', function (e) {
+               e.preventDefault();
+
+               // Target the specific content for the PDF
+               const content = document.querySelector('.war-content');
+               const { jsPDF } = window.jspdf;
+
+               // Generate the PDF using html2canvas
+               html2canvas(content, { scale: 2 }).then(canvas => {
+                   const pdf = new jsPDF('p', 'mm', 'a4');
+                   const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+                   const imgWidth = 210; // A4 width in mm
+                   const pageHeight = 297; // A4 height in mm
+                   const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                   let position = 0;
+
+                   pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+
+                   // Add more pages if the content overflows
+                   if (imgHeight > pageHeight) {
+                       let remainingHeight = imgHeight - pageHeight;
+                       while (remainingHeight > 0) {
+                           position = position - pageHeight;
+                           pdf.addPage();
+                           pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                           remainingHeight -= pageHeight;
+                       }
+                   }
+
+                   pdf.save('Russia-Crimea-War.pdf');
+               });
+           });
+       }
+   });
+//GRAFİK
+document.addEventListener("DOMContentLoaded", function () {
+    const casualtiesSelect = document.getElementById("casualtiesSelect");
+    const chartCanvas = document.getElementById("casualtiesChart");
+    const chartNote = document.querySelector(".casualties-note");
+    const environmentalImage = document.getElementById("environmentalImage");
+
+    let myChart = null;
+
+    // Varsayılan durumda kapak görselini göster
+    environmentalImage.style.display = "block";
+    chartCanvas.style.display = "none";
+    chartNote.style.display = "none";
+
+    casualtiesSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        if (!selectedValue) {
+            // Kapak görselini göster
+            environmentalImage.style.display = "block";
+            chartCanvas.style.display = "none";
+            chartNote.style.display = "none";
+            return;
+        } else {
+            // Kapak görselini gizle ve grafiği göster
+            environmentalImage.style.display = "none";
+            chartCanvas.style.display = "block";
+            chartNote.style.display = "block";
+        }
+
+        let chartData = {
+            labels: [2021, 2022],
+            datasets: []
+        };
+
+        if (selectedValue === "population") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [14.0, 14.0],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Ukraine',
+                    data: [44.0, 41.0],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Population data is displayed in millions.";
+        } else if (selectedValue === "migration") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [314112.0, 765629.0],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Ukraine',
+                    data: [-1129.0, -5699445.0],
+                    borderColor: 'rgb(255, 159, 64)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Migration data is displayed in thousands of people.";
+        } else if (selectedValue === "median_age") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [38.856, 39.071],
+                    borderColor: 'rgb(153, 102, 255)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Ukraine',
+                    data: [41.068, 41.451],
+                    borderColor: 'rgb(255, 99, 71)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Median age is displayed in years.";
+        } else if (selectedValue === "life_expectancy") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [69.419, 69.419],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Ukraine',
+                    data: [71.624, 71.624],
+                    borderColor: 'rgb(255, 159, 64)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Life expectancy is displayed in years.";
+        } else if (selectedValue === "human_rights_score") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [0.42, 0.31],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Ukraine',
+                    data: [0.76, 0.61],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Human rights score is displayed on a scale from 0 to 1.";
+        } else if (selectedValue === "female_population_percent") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [53.55, 53.56],
+                    borderColor: 'rgb(153, 102, 255)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Ukraine',
+                    data: [53.72, 54.08],
+                    borderColor: 'rgb(255, 159, 64)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Female population is displayed as a percentage.";
+        } else if (selectedValue === "death_rate") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [16.728, 13.116],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Ukraine',
+                    data: [17.134, 14.188],
+                    borderColor: 'rgb(255, 159, 64)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Death rate is displayed as the number per 1,000 people.";
+        } else if (selectedValue === "birth_rate") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [9.749, 9.17],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Ukraine',
+                    data: [6.977, 5.679],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Birth rate is displayed as the number per 1,000 people.";
+        }
+        
+        myChart = new Chart(chartCanvas, {
+                    type: 'line',
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                callbacks: {
+                                    label: function (context) {
+                                        let label = context.dataset.label + ': ';
+                                        if (selectedValue === 'population') {
+                                            return label + context.parsed.y + ' Million';
+                                        }
+                                        return label + context.parsed.y;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                position: 'left',
+                                grid: {
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            }
+                        },
+                        layout: {
+                            padding: {
+                                left: 25,
+                                bottom: 20,
+                                right: 15,
+                                top: 10
+                            }
+                        }
+                    }
+                });
+            });
+        });
+
+//ECONOMIC
+document.addEventListener("DOMContentLoaded", function () {
+    const economicSelect = document.getElementById("economicSelect");
+    const economicChartCanvas = document.getElementById("economicChart");
+    const economicNote = document.getElementById("economicNote");
+    const economicImage = document.getElementById("economicImage"); // Görsel için ekleme
+
+    let economicChart = null;
+
+    // Sabit renkler
+    const russiaColor = "rgb(54, 162, 235)"; // Rusya için sabit renk
+    const ukraineColor = "rgb(255, 99, 132)"; // Ukrayna için sabit renk
+
+    economicSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        // Mevcut grafik varsa yok et
+        if (economicChart) {
+            economicChart.destroy();
+            economicChart = null; // Grafik nesnesini sıfırla
+        }
+
+        // Eğer "Select an indicator" seçiliyse
+        if (selectedValue === "") {
+            // Görseli göster, grafik ve notları gizle
+            economicImage.style.display = "block";
+            economicChartCanvas.style.display = "none";
+            economicNote.style.display = "none";
+            return; // Daha fazla işlem yapma
+        }
+
+        // Görseli gizle, grafik ve notları göster
+        economicImage.style.display = "none";
+        economicChartCanvas.style.display = "block";
+        economicNote.style.display = "block";
+
+        let chartData = {
+            labels: [2013, 2014, 2019],
+            datasets: []
+        };
+
+        if (selectedValue === "gdp") {
+            chartData.datasets = [
+                {
+                    label: "Russia",
+                    data: [25335.326, 25127.727, 26364.47],
+                    borderColor: russiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Ukraine",
+                    data: [12824.773, 12237.292, 12964.437],
+                    borderColor: ukraineColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Note: GDP data is displayed in millions of USD.";
+        } else if (selectedValue === "gni") {
+            chartData.datasets = [
+                {
+                    label: "Russia",
+                    data: [25335.326, 25127.727, 26364.47],
+                    borderColor: russiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Ukraine",
+                    data: [12824.773, 12237.292, 12964.437],
+                    borderColor: ukraineColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Note: GNI data is displayed in millions of USD.";
+        } else if (selectedValue === "manufacturing") {
+            chartData.datasets = [
+                {
+                    label: "Russia",
+                    data: [11.057306, 11.335581, 12.969207],
+                    borderColor: russiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Ukraine",
+                    data: [11.140592, 12.228128, 10.7886],
+                    borderColor: ukraineColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Note: Manufacturing data is displayed as a percentage of GDP.";
+        } else if (selectedValue === "exchange_rate") {
+            chartData.datasets = [
+                {
+                    label: "Russia",
+                    data: [31.8, 67.0, 65.0],
+                    borderColor: russiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Ukraine",
+                    data: [7.993, 11.88665942, 25.84558933],
+                    borderColor: ukraineColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Note: The exchange rate is displayed as equivalent to USD.";
+        } else if (selectedValue === "inflation_rate") {
+            chartData.datasets = [
+                {
+                    label: "Russia",
+                    data: [6.75, 7.823412, 4.4703665],
+                    borderColor: russiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Ukraine",
+                    data: [-0.23894863, 12.0718565, 7.8867173],
+                    borderColor: ukraineColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Note: The inflation rate is shown as the annual percentage change.";
+        }
+
+        economicChart = new Chart(economicChartCanvas, {
+            type: "line",
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: {
+                            padding: 20
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 10
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 10
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 25,
+                        bottom: 20,
+                        right: 15,
+                        top: 10
+                    }
+                }
+            }
+        });
+    });
+
+    economicImage.style.display = "block";
+    economicChartCanvas.style.display = "none";
+    economicNote.style.display = "none";
+});
+</script>
+<script src="your-script-file.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const impactBoxes = document.querySelector('.impact-boxes');
+        const warHeader = document.querySelector('.war-header');
+        const socialIcons = document.querySelector('.social-icons'); // Sosyal medya ikonları
+        const warText = document.querySelector('.war-text'); // Yazının bulunduğu ana alan
+    
+        if (impactBoxes && warHeader) {
+            // impact-boxes'ı war-header'ın üstüne taşı
+            warHeader.parentNode.insertBefore(impactBoxes, warHeader);
+        }
+
+        if (socialIcons && warText) {
+            // Sosyal medya ikonlarını war-text'in altına taşı
+            warText.parentNode.insertBefore(socialIcons, warText.nextSibling);
+        }
+    });
+</script>
+<div class="index-footer">
+    <p>© 2024 Scars of Wars - All Rights Reserved</p>
+  </div>
+</body>
+</html>

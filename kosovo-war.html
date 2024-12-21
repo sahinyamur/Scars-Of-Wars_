@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kosovo War - Scars Of Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <body id="body" data-page="kosovoWar"> 
+        
+    <div class="topnav">
+        <!-- WARS linkini dropdown ile değiştiriyoruz -->
+        <div class="nav-item dropdown">
+            <button class="dropbtn">
+                <i class="fa fa-crosshairs"></i>
+                WARS
+            </button>
+            <div class="dropdown-content">
+                <a href="gulf-war.html">Gulf War (1990-1991)</a>
+                <a href="afghan-war.html">Afghan War (2001-2021)</a>
+                <a href="iraq--war.html">Iraq War (2003-2011)</a>
+                <a href="saudi-arabia-yemen-war.html">Saudi Arabia-Yemen War (2015-2023)</a>
+                <a href="first-intifada.html">First Intifada (1987-1993)</a>
+                <a href="second-intifada.html">Second Intifada (2000-2005)</a>
+                <a href="gaza-war.html">Gaza War (2008-2009)</a>
+                <a href="current-gaza-conflict.html">Current Gaza Conflict (2012-2023)</a>
+                <a href="georgia-intervention.html">Russian Intervention in Georgia (2008)</a>
+                <a href="nagorno-karabakh-war.html">Nagorno-Karabakh War (2020)</a>
+                <a href="kosovo-war.html">Kosovo War (1998-1999)</a>
+                <a href="india-pakistan-conflicts.html">India-Pakistan Border Conflicts (2019)</a>
+                <a href="china-india-border.html">China-India Border Conflict (2020-2023)</a>
+                <a href="ethiopia-sudan-border.html">Ethiopia-Sudan Border Conflicts (2020-2023)</a>
+                <a href="russia-crimea-war.html">Russia-Crimea War (2014)</a>
+                <a href="russia-ukraine-war.html">Russia-Ukraine War (2022-2023)</a>
+            </div>
+        </div>
+
+        <a class="active" href="index.html"><i class="fa fa-shield"></i> SCARS OF WARS </a>
+        <a href="aboutus.html"><i class="fa fa-leaf"></i> ABOUT US</a>
+ <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/ybsbakircayedu/" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://x.com/ybs_bakircayedu" target="_blank" class="fa fa-twitter"></a>
+            <a href="https://www.instagram.com/ybs_bakircayedu/" target="_blank" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/in/bakircay-ybs/?originalSubdomain=tr" target="_blank" class="fa fa-linkedin"></a>
+            <a href="#" id="download-pdf" class="fa fa-file-pdf-o" title="Download as PDF"></a>
+           </div>
+    </div>
+    <h1 class="main-header">Kosovo War</h1>
+
+
+    <!-- Main Content -->
+    <div class="war-content">
+        <!-- War Header -->
+        <div class="war-header">
+            <div class="war-main-content">
+                <div class="war-text">
+                    <h2 style="text-align: right; font-size: 28px;   font-family: 'Cinzel', sans-serif;">PROGRESSION OF THE WAR</h2>                   
+                    <p>The Kosovo War (1998-1999) was a conflict between Yugoslav forces, led by Slobodan Milošević, and the Kosovo Liberation Army (KLA), an ethnic Albanian separatist group. The war was fueled by longstanding ethnic tensions and repression of Kosovo’s Albanian majority by the Yugoslav government. Widespread atrocities, including massacres and forced displacement, prompted international condemnation.</p>
+                    <p>NATO intervened in 1999, launching a bombing campaign against Yugoslav forces to stop the violence and protect civilians. The intervention forced Yugoslav forces to withdraw from Kosovo, which was placed under United Nations administration. However, the bombing campaign also caused significant civilian casualties and destruction, sparking debates about the ethics of military intervention.</p> 
+                    <p>Kosovo declared independence in 2008, though Serbia and several other countries have not recognized it. The war remains a sensitive issue, reflecting the deep divisions in the Balkans.</p>
+                </div>
+            <img src="kunye_2/kosovo.jpg" alt="Kosovo War Künye">
+        </div>
+    </div>
+        <!-- Impact Boxes -->
+        <div class="impact-boxes">
+            <!-- Structural Damage Box -->
+            <div class="impact-box structural-damage">
+                <h2>Structural Damage</h2>
+                <div class="city-selector">
+                    <select id="citySelect">
+                        <option value="">Select a City</option>
+                        <option value="pristina">Kosovo - Pristina</option>
+                        <option value="belgrade">Serbia - Belgrade</option>
+                    </select>
+                      <!-- Varsayılan Görsel BURAYA-->
+<div class="city-image" id="cityImageContainer">
+    <img id="cityImage" src="images/pristina_kosovo_war_gu╠êncel.jpg" alt="City Preview">
+</div>   
+                </div>
+                <div class="slider-wrapper">
+                    <!-- Default Message -->
+                    <div class="default-message">
+                        Please select a city to see the impact
+                    </div>
+                    <div class="city-info-box"></div>
+
+                    <!-- Pristina Slider -->
+                    <div class="container slider-pristina" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/kosovo-war/pristina/KOSOVOWAR_PRISTINA_PRE.jpeg" alt="Pristina Before">
+                                <div class="label label-before">Before Kosovo War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/kosovo-war/pristina/KOSOVOWAR_PRISTINA_POST.jpeg" alt="Pristina After">
+                                <div class="label label-after">After Kosovo War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Belgrade Slider -->
+                    <div class="container slider-belgrade" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/kosovo-war/belgrade/KOSOVOWAR_BELGRADE_PRE.jpeg" alt="Belgrade Before">
+                                <div class="label label-before">Before Kosovo War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/kosovo-war/belgrade/KOSOVOWAR_BELGRADE_POST.jpeg" alt="Belgrade After">
+                                <div class="label label-after">After Kosovo War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Casualties Box -->
+            <div class="impact-box casualties">
+                <h2>Environmental Damage</h2>
+                <div class="casualties-content">
+                    <select id="casualtiesSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="population">Population</option>
+                        <option value="migration">Migration</option>
+                        <option value="median_age">Median Age</option>
+                        <option value="life_expectancy">Life Expectancy</option>
+                        <option value="human_rights_score">Human Rights Score</option>
+                        <option value="female_population_percent">Female Population Percent</option>
+                        <option value="death_rate">Death Rate</option>
+                        <option value="birth_rate">Birth Rate</option>
+                    </select>
+                    <canvas id="casualtiesChart"></canvas>
+                    <p class="chart-note casualties-note"></p>
+                </div>
+            </div>
+            
+            <!-- Economic Impact Box -->
+            <div class="impact-box economic">
+                <h2>Economic Damage</h2>
+                <div class="economic-content">
+                    <select id="economicSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="gdp">GDP</option>
+                        <option value="gni">GNI</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="exchange_rate">Exchange Rate</option>
+                        <option value="inflation_rate">Inflation Rate</option>
+                    </select>
+                    <div class="economic-image-container">
+                        <img id="economicImage" src="images/ekonomik.webp" alt="Economic Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+                    </div>
+                    <canvas id="economicChart" style="height:400px; width:100%;"></canvas>
+                    <p id="economicNote" class="chart-note"></p>  <!-- Yeni eklenen satır -->
+                </div>
+            </div>
+            <a href="scars_of_wars_project-compressed-converted.html" target="_blank" class="methodology-link">*Methodology</a>
+        </div>
+        </div>
+    </div>
+
+<!-- Scripts -->
+<script src="script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const citySelect = document.getElementById("citySelect"); // Şehir seçim kutusu
+        const cityImageContainer = document.getElementById("cityImageContainer"); // Varsayılan görselin bulunduğu div
+        const sliders = document.querySelectorAll(".container"); // Tüm slider'lar
+    
+        // Sliderları gizlemek için yardımcı fonksiyon
+        function hideAllSliders() {
+            sliders.forEach((slider) => {
+                slider.style.display = "none"; // Tüm slider'ları gizle
+            });
+        }
+    
+        // Şehir değişimi sırasında çalışacak olay
+        citySelect.addEventListener("change", function () {
+            const selectedCity = citySelect.value.trim(); // Seçilen şehri al ve boşlukları temizle
+    
+            if (selectedCity === "") {
+                // Eğer şehir seçilmediyse
+                cityImageContainer.style.display = "block"; // Varsayılan görseli göster
+                hideAllSliders(); // Slider'ları gizle
+            } else {
+                // Şehir seçildiyse
+                cityImageContainer.style.display = "none"; // Varsayılan görseli gizle
+                hideAllSliders(); // Tüm slider'ları önce gizle
+    
+                const activeSlider = document.querySelector(`.slider-${selectedCity}`); // İlgili slider'ı bul
+                if (activeSlider) {
+                    activeSlider.style.display = "block"; // İlgili slider'ı göster
+                } else {
+                    console.error(`Slider for city "${selectedCity}" not found!`); // Eğer slider yoksa konsolda hata göster
+                }
+            }
+        });
+    
+        // Sayfa yüklendiğinde varsayılan görseli göster ve slider'ları gizle
+        cityImageContainer.style.display = "block";
+        hideAllSliders();
+    });
+   document.addEventListener("DOMContentLoaded", function () {
+       const downloadBtn = document.getElementById('download-pdf');
+       if (downloadBtn) {
+           downloadBtn.addEventListener('click', function (e) {
+               e.preventDefault();
+
+               // Target the specific content for the PDF
+               const content = document.querySelector('.war-content');
+               const { jsPDF } = window.jspdf;
+
+               // Generate the PDF using html2canvas
+               html2canvas(content, { scale: 2 }).then(canvas => {
+                   const pdf = new jsPDF('p', 'mm', 'a4');
+                   const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+                   const imgWidth = 210; // A4 width in mm
+                   const pageHeight = 297; // A4 height in mm
+                   const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                   let position = 0;
+
+                   pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+
+                   // Add more pages if the content overflows
+                   if (imgHeight > pageHeight) {
+                       let remainingHeight = imgHeight - pageHeight;
+                       while (remainingHeight > 0) {
+                           position = position - pageHeight;
+                           pdf.addPage();
+                           pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                           remainingHeight -= pageHeight;
+                       }
+                   }
+
+                   pdf.save('Kosovo_War.pdf');
+               });
+           });
+       }
+   });
+
+//GRAFİK
+document.addEventListener("DOMContentLoaded", function () {
+    const casualtiesSelect = document.getElementById("casualtiesSelect");
+    const chartCanvas = document.getElementById("casualtiesChart");
+    const chartNote = document.querySelector(".casualties-note");
+    
+    let myChart = null;
+
+    casualtiesSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        let chartData = {
+            labels: [1997, 1999, 2004],
+            datasets: []
+        };
+
+        if (selectedValue === "population") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [2197286.0, 1871526.0, 1822779.0],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [7789183.0, 7734364.0, 7565843.0],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            chartNote.innerText = "Population data is shown in millions."; // Explanation
+
+
+        }
+
+        else if (selectedValue === "migration") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [-4655.0, -168484.0, -29433.0],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [-5817.0, -4073.0, 7300.0],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            chartNote.innerText = "Annual net migration (positive for inflow, negative for outflow).";
+        }
+
+        else if (selectedValue === "median_age") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [22.332, 21.435, 22.626],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [38.247, 38.828, 39.947],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            chartNote.innerText = "Age data is shown in years.";
+        }
+
+        else if (selectedValue === "life_expectancy") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [73.0659, 69.4184, 75.3042],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [71.649, 69.7577, 72.6165],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            chartNote.innerText = "Life expectancy is shown in years.";
+
+        }
+
+        else if (selectedValue === "human_rights_score") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [0.0, 0.7, 0.73],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [0.59, 0.56, 0.91],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            chartNote.innerText = "Human Rights Index (0-1 scale, higher is better).";
+
+
+        }
+
+        else if (selectedValue === "female_population_percent") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [48.84, 48.68, 49.08],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [51.62, 51.69, 51.79],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            chartNote.innerText = "Percentage of females in the total population.";
+
+        }
+
+        else if (selectedValue === "death_rate") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [5.627, 11.518, 5.572],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [11.39, 13.528, 13.869],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            chartNote.innerText = "Number of deaths per 1,000 people annually.";
+
+        }
+
+        else if (selectedValue === "birth_rate") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [19.938, 20.618, 19.519],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [9.518, 9.271, 9.454],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            chartNote.innerText = "Number of births per 1,000 people annually.";
+
+
+        }
+
+        myChart = new Chart(chartCanvas, {
+        type: 'line',
+        data: chartData,
+        options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    padding: 20
+                }
+            },
+            tooltip: {
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label + ': ';
+                        if (selectedValue === 'population') {
+                            return label + context.parsed.y + ' Million';
+                        }
+                        return label + context.parsed.y;
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: false,
+                position: 'left',
+                grid: {
+                    drawBorder: false
+                },
+                ticks: {
+                    padding: 10
+                }
+            },
+            x: {
+                grid: {
+                    drawBorder: false
+                },
+                ticks: {
+                    padding: 10
+                }
+            }
+        },
+        layout: {
+            padding: {
+                left: 25,    // Sola kaydırmak için
+                bottom: 20,  // Aşağı kaydırmak için
+                right: 15,
+                top: 10
+                }
+            }
+            }
+        });
+    });
+});
+//ECONOMIC
+document.addEventListener("DOMContentLoaded", function () {
+    const economicSelect = document.getElementById("economicSelect");
+    const economicChartCanvas = document.getElementById("economicChart");
+    const economicNote = document.getElementById("economicNote");
+
+    let economicChart = null;
+
+    economicSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        if (economicChart) {
+            economicChart.destroy();
+        }
+
+        let chartData = {
+            labels: [1997, 1999, 2004],
+            datasets: []
+        };
+
+        if (selectedValue === "gdp") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [null, null, null],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [8876.612, 8367.898, 11509.9795],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            economicNote.innerText = "GDP data is shown in millions of USD.";
+
+        }
+        else if (selectedValue === "gni") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [null, null, null],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [8876.612, 8367.898, 11509.9795],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+          
+        ];
+            economicNote.innerText = "GNI data is shown in millions of USD.";
+
+        }
+        else if (selectedValue === "manufacturing") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [null, null, null],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [20.753773, 21.847502, 20.484055],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+         
+        ];
+            economicNote.innerText = "Production data are shown as a percentage of GDP.";
+
+        }
+        else if (selectedValue === "exchange_rate") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [0.8, 0.94, 0.803921648],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [5.9123, 11.6615, 58.37570833],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            
+        ];
+            economicNote.innerText = "Exchange rate is shown in USD equivalent.";
+
+             }
+        else if (selectedValue === "inflation_rate") {
+            chartData.datasets = [
+            {
+                label: 'Kosovo',
+                data: [null, null, -1.064727],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Serbia',
+                data: [23.307867, 42.453907, 11.026362],
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+           
+        ];
+            economicNote.innerText = "The inflation rate is shown as the annual percentage change.";
+    
+        }
+
+        economicChart = new Chart(economicChartCanvas, {
+            type: 'line',
+            data: chartData,
+            options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    padding: 20
+                }
+            },
+            tooltip: {
+                mode: 'index',
+                intersect: false,
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label + ': ';
+                        if (selectedValue === 'population') {
+                            return label + context.parsed.y + ' Million';
+                        }
+                        return label + context.parsed.y;
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: false,
+                position: 'left',
+                grid: {
+                    drawBorder: true, // Kenar çizgisi etkin
+                    borderWidth: 100    // Kalınlık ayarı
+                },
+                ticks: {
+                    padding: 10
+                }
+            },
+            x: {
+                grid: {
+                    drawBorder: true, // Kenar çizgisi etkin
+                    borderWidth: 100   // Kalınlık ayarı
+                },
+                ticks: {
+                    padding: 10
+                }
+            }
+        },
+        layout: {
+            padding: {
+                left: 25,    // Sola kaydırmak için
+                bottom: 20,  // Aşağı kaydırmak için
+                right: 15,
+                top: 10
+                }
+            }
+            }
+        });
+    });
+});
+  
+</script>
+<script src="your-script-file.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const impactBoxes = document.querySelector('.impact-boxes');
+        const warHeader = document.querySelector('.war-header');
+        const socialIcons = document.querySelector('.social-icons'); // Sosyal medya ikonları
+        const warText = document.querySelector('.war-text'); // Yazının bulunduğu ana alan
+    
+        if (impactBoxes && warHeader) {
+            // impact-boxes'ı war-header'ın üstüne taşı
+            warHeader.parentNode.insertBefore(impactBoxes, warHeader);
+        }
+
+        if (socialIcons && warText) {
+            // Sosyal medya ikonlarını war-text'in altına taşı
+            warText.parentNode.insertBefore(socialIcons, warText.nextSibling);
+        }
+    });
+</script>
+<div class="index-footer">
+    <p>© 2024 Scars of Wars - All Rights Reserved</p>
+  </div>
+</body>
+</html>

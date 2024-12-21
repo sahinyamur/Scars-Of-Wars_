@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian Intervention in Georgia - Scars Of Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <body id="body" data-page="russianInterventionGeorgia"> 
+        
+    <div class="topnav">
+        <!-- WARS linkini dropdown ile değiştiriyoruz -->
+        <div class="nav-item dropdown">
+            <button class="dropbtn">
+                <i class="fa fa-crosshairs"></i>
+                WARS
+            </button>
+            <div class="dropdown-content">
+                <a href="gulf-war.html">Gulf War (1990-1991)</a>
+                <a href="afghan-war.html">Afghan War (2001-2021)</a>
+                <a href="iraq--war.html">Iraq War (2003-2011)</a>
+                <a href="saudi-arabia-yemen-war.html">Saudi Arabia-Yemen War (2015-2023)</a>
+                <a href="first-intifada.html">First Intifada (1987-1993)</a>
+                <a href="second-intifada.html">Second Intifada (2000-2005)</a>
+                <a href="gaza-war.html">Gaza War (2008-2009)</a>
+                <a href="current-gaza-conflict.html">Current Gaza Conflict (2012-2023)</a>
+                <a href="georgia-intervention.html">Russian Intervention in Georgia (2008)</a>
+                <a href="nagorno-karabakh-war.html">Nagorno-Karabakh War (2020)</a>
+                <a href="kosovo-war.html">Kosovo War (1998-1999)</a>
+                <a href="india-pakistan-conflicts.html">India-Pakistan Border Conflicts (2019)</a>
+                <a href="china-india-border.html">China-India Border Conflict (2020-2023)</a>
+                <a href="ethiopia-sudan-border.html">Ethiopia-Sudan Border Conflicts (2020-2023)</a>
+                <a href="russia-crimea-war.html">Russia-Crimea War (2014)</a>
+                <a href="russia-ukraine-war.html">Russia-Ukraine War (2022-2023)</a>
+            </div>
+        </div>
+
+        <a class="active" href="index.html"><i class="fa fa-shield"></i> SCARS OF WARS </a>
+        <a href="aboutus.html"><i class="fa fa-leaf"></i> ABOUT US</a>
+ <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/ybsbakircayedu/" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://x.com/ybs_bakircayedu" target="_blank" class="fa fa-twitter"></a>
+            <a href="https://www.instagram.com/ybs_bakircayedu/" target="_blank" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/in/bakircay-ybs/?originalSubdomain=tr" target="_blank" class="fa fa-linkedin"></a>
+            <a href="#" id="download-pdf" class="fa fa-file-pdf-o" title="Download as PDF"></a>
+           </div>
+    </div>
+    <h1 class="main-header">Russian Intervention in Georgia</h1>
+
+    <!-- Main Content -->
+    <div class="war-content">
+        <!-- War Header -->
+        <div class="war-header">
+            <div class="war-main-content">
+                <div class="war-text">
+                    <h2 style="text-align: right; font-size: 28px;   font-family: 'Cinzel', sans-serif;">PROGRESSION OF THE WAR</h2>                   
+                    <p>The Russian Intervention in Georgia in 2008, also known as the Russo-Georgian War, was a five-day conflict sparked by Georgia's attempt to retake control of South Ossetia, a breakaway region supported by Russia. In response to Georgia’s military actions, Russia launched a full-scale invasion, quickly overpowering Georgian forces and occupying both South Ossetia and Abkhazia.</p> 
+                    <p>The war highlighted Russia’s willingness to use military force to assert its influence in the post-Soviet space. It also exposed divisions within the international community, with Western nations condemning Russia but stopping short of taking significant punitive measures. The conflict displaced thousands of civilians and solidified the de facto independence of South Ossetia and Abkhazia, though they remain unrecognized by most of the world.</p> 
+                    <p>The war had lasting implications for regional security, including NATO’s relationship with Georgia and Russia’s broader geopolitical strategy. It also served as a precursor to Russia's later actions in Ukraine.</p>
+                </div>
+                <img src="kunye_2/georgia.jpg" alt="Georgia War Künye">
+            </div>
+        </div>
+        <!-- Impact Boxes -->
+        <div class="impact-boxes">
+            <!-- Structural Damage Box -->
+            <div class="impact-box structural-damage">
+                <h2>Structural Damage</h2>
+                <div class="city-selector">
+                    <select id="citySelect">
+                        <option value="">Select a City</option>
+                        <option value="tskhinvali">Georgia - Tskhinvali</option>
+                        <option value="russia">Russia</option>
+                    </select>
+                     <!-- Varsayılan Görsel BURAYA-->
+<div class="city-image" id="cityImageContainer">
+    <img id="cityImage" src="images/tskhinvali_intervention_gu╠êncel.jpg" alt="City Preview">
+</div>       
+                </div>
+                <div class="slider-wrapper">
+                    <!-- Default Message -->
+                    <div class="default-message">
+                        Please select a city to see the impact
+                    </div>
+                    <div class="city-info-box"></div>
+
+                    <!-- Alkarameh Slider -->
+                    <div class="container slider-tskhinvali" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/russian-intervention-georgia/tskhinvali/RUSSIANINTERVENTIONINGEORGIA_TSKHINVALI_PRE.jpg" alt="Tskhinvali Before">
+                                <div class="label label-before">Before War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/russian-intervention-georgia/tskhinvali/RUSSIANINTERVENTIONINGEORGIA_TSKHINVALI_POST.jpg" alt="Tskhinvali After">
+                                <div class="label label-after">After War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+               <!-- Casualties Box -->
+               <div class="impact-box casualties">
+                <h2>Environmental Damage</h2>
+                <div class="casualties-content">
+                    <select id="casualtiesSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="population">Population</option>
+                        <option value="migration">Migration</option>
+                        <option value="median_age">Median Age</option>
+                        <option value="life_expectancy">Life Expectancy</option>
+                        <option value="human_rights_score">Human Rights Score</option>
+                        <option value="female_population_percent">Female Population Percent</option>
+                        <option value="death_rate">Death Rate</option>
+                        <option value="birth_rate">Birth Rate</option>
+                    </select>
+                     <!-- Görseli kapsayan div -->
+        <div class="environmental-image-container">
+            <img id="environmentalImage" src="images/çevre.jpg" alt="Environmental Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+        </div>
+                    <canvas id="casualtiesChart"></canvas>
+                    <p class="chart-note casualties-note"></p>
+                </div>
+            </div>
+            
+            <!-- Economic Impact Box -->
+            <div class="impact-box economic">
+                <h2>Economic Damage</h2>
+                <div class="economic-content">
+                    <select id="economicSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="gdp">GDP</option>
+                        <option value="gni">GNI</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="exchange_rate">Exchange Rate</option>
+                        <option value="inflation_rate">Inflation Rate</option>
+                    </select>
+                    <div class="economic-image-container">
+                        <img id="economicImage" src="images/ekonomik.webp" alt="Economic Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+                    </div>
+                    <canvas id="economicChart" style="height:400px; width:100%;"></canvas>
+                    <p id="economicNote" class="chart-note"></p>  <!-- Yeni eklenen satır -->
+                </div>
+            </div>
+            <a href="scars_of_wars_project-compressed-converted.html" target="_blank" class="methodology-link">*Methodology</a>
+        </div>
+        </div>
+    </div>
+<!-- Scripts -->
+<script src="script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const citySelect = document.getElementById("citySelect"); // Şehir seçim kutusu
+        const cityImageContainer = document.getElementById("cityImageContainer"); // Varsayılan görselin bulunduğu div
+        const sliders = document.querySelectorAll(".container"); // Tüm slider'lar
+    
+        // Sliderları gizlemek için yardımcı fonksiyon
+        function hideAllSliders() {
+            sliders.forEach((slider) => {
+                slider.style.display = "none"; // Tüm slider'ları gizle
+            });
+        }
+    
+        // Şehir değişimi sırasında çalışacak olay
+        citySelect.addEventListener("change", function () {
+            const selectedCity = citySelect.value.trim(); // Seçilen şehri al ve boşlukları temizle
+    
+            if (selectedCity === "") {
+                // Eğer şehir seçilmediyse
+                cityImageContainer.style.display = "block"; // Varsayılan görseli göster
+                hideAllSliders(); // Slider'ları gizle
+            } else {
+                // Şehir seçildiyse
+                cityImageContainer.style.display = "none"; // Varsayılan görseli gizle
+                hideAllSliders(); // Tüm slider'ları önce gizle
+    
+                const activeSlider = document.querySelector(`.slider-${selectedCity}`); // İlgili slider'ı bul
+                if (activeSlider) {
+                    activeSlider.style.display = "block"; // İlgili slider'ı göster
+                } else {
+                    console.error(`Slider for city "${selectedCity}" not found!`); // Eğer slider yoksa konsolda hata göster
+                }
+            }
+        });
+    
+        // Sayfa yüklendiğinde varsayılan görseli göster ve slider'ları gizle
+        cityImageContainer.style.display = "block";
+        hideAllSliders();
+    });
+   document.addEventListener("DOMContentLoaded", function () {
+       const downloadBtn = document.getElementById('download-pdf');
+       if (downloadBtn) {
+           downloadBtn.addEventListener('click', function (e) {
+               e.preventDefault();
+
+               // Target the specific content for the PDF
+               const content = document.querySelector('.war-content');
+               const { jsPDF } = window.jspdf;
+
+               // Generate the PDF using html2canvas
+               html2canvas(content, { scale: 2 }).then(canvas => {
+                   const pdf = new jsPDF('p', 'mm', 'a4');
+                   const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+                   const imgWidth = 210; // A4 width in mm
+                   const pageHeight = 297; // A4 height in mm
+                   const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                   let position = 0;
+
+                   pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+
+                   // Add more pages if the content overflows
+                   if (imgHeight > pageHeight) {
+                       let remainingHeight = imgHeight - pageHeight;
+                       while (remainingHeight > 0) {
+                           position = position - pageHeight;
+                           pdf.addPage();
+                           pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                           remainingHeight -= pageHeight;
+                       }
+                   }
+
+                   pdf.save('Georgia-Intervention.pdf');
+               });
+           });
+       }
+   });
+//GRAFİK
+document.addEventListener("DOMContentLoaded", function () {
+    const casualtiesSelect = document.getElementById("casualtiesSelect");
+    const chartCanvas = document.getElementById("casualtiesChart");
+    const chartNote = document.querySelector(".casualties-note");
+    const environmentalImage = document.getElementById("environmentalImage");
+
+    let myChart = null;
+
+    // Başlangıçta görseli göster, grafiği ve notları gizle
+    environmentalImage.style.display = "block";
+    chartCanvas.style.display = "none";
+    chartNote.style.display = "none";
+
+    casualtiesSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        if (selectedValue === "") {
+            // Hiçbir seçim yapılmadığında görseli göster
+            environmentalImage.style.display = "block";
+            chartCanvas.style.display = "none";
+            chartNote.style.display = "none";
+            return;
+        } else {
+            // Seçim yapıldığında görseli gizle ve grafiği göster
+            environmentalImage.style.display = "none";
+            chartCanvas.style.display = "block";
+            chartNote.style.display = "block";
+        }
+
+        let chartData = {
+            labels: [2007, 2008, 2013],
+            datasets: []
+        };
+
+        if (selectedValue === "population") {
+            chartData.datasets = [
+                {
+                    label: 'Georgia',
+                    data: [39.0, 39.0, 38.0],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Russia',
+                    data: [14.0, 14.0, 14.0],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Population data are shown in millions.";
+        } else if (selectedValue === "migration") {
+            chartData.datasets = [
+                {
+                    label: 'Georgia',
+                    data: [-32141.998, -32463.002, -40117.0],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Russia',
+                    data: [365717.0, 360840.0, 289872.0],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Immigration data are shown in thousands of people.";
+        } else if (selectedValue === "median_age") {
+            chartData.datasets = [
+                {
+                    label: 'Georgia',
+                    data: [34.664, 34.837, 35.853],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Russia',
+                    data: [36.614, 36.73, 37.376],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Age data is shown in years.";
+        } else if (selectedValue === "life_expectancy") {
+            chartData.datasets = [
+                {
+                    label: 'Georgia',
+                    data: [71.5679, 71.3323, 72.6284],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Russia',
+                    data: [68.1535, 68.4943, 71.3025],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Life expectancy is shown in years.";
+        } else if (selectedValue === "human_rights_score") {
+            chartData.datasets = [
+                {
+                    label: 'Georgia',
+                    data: [0.74, 0.72, 0.83],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Russia',
+                    data: [0.54, 0.54, 0.51],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Human rights scores are shown on a scale of 0-1.";
+        } else if (selectedValue === "female_population_percent") {
+            chartData.datasets = [
+                {
+                    label: 'Georgia',
+                    data: [53.25, 53.18, 52.83],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Russia',
+                    data: [53.75, 53.76, 53.67],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Female population is shown as a percentage.";
+        } else if (selectedValue === "death_rate") {
+            chartData.datasets = [
+                {
+                    label: 'Georgia',
+                    data: [12.671, 12.625, 12.336],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Russia',
+                    data: [14.592, 14.568, 13.024],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Death rate is shown in numbers per 1000 people.";
+        } else if (selectedValue === "birth_rate") {
+            chartData.datasets = [
+                {
+                    label: 'Georgia',
+                    data: [13.591, 14.697, 15.065],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Russia',
+                    data: [11.348, 12.094, 13.295],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Birth rate is expressed as numbers per 1000 people.";
+        }
+        myChart = new Chart(chartCanvas, {
+            type: 'line',
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        callbacks: {
+                            label: function (context) {
+                                let label = context.dataset.label + ': ';
+                                if (selectedValue === 'population') {
+                                    return label + context.parsed.y + ' Million';
+                                }
+                                return label + context.parsed.y;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        position: 'left',
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 10
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 10
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 25,
+                        bottom: 20,
+                        right: 15,
+                        top: 10
+                    }
+                }
+            }
+        });
+    });
+});
+//ECONOMIC
+document.addEventListener("DOMContentLoaded", function () {
+    const economicSelect = document.getElementById("economicSelect");
+    const economicChartCanvas = document.getElementById("economicChart");
+    const economicNote = document.getElementById("economicNote");
+    const economicImage = document.getElementById("economicImage");
+
+    let economicChart = null;
+
+    const russiaColor = 'rgb(54, 162, 235)';
+    const georgiaColor = 'rgb(255, 206, 86)';
+
+    economicSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        if (economicChart) {
+            economicChart.destroy();
+        }
+
+        if (selectedValue === "") {
+            economicImage.style.display = "block";
+            economicChartCanvas.style.display = "none";
+            economicNote.style.display = "none";
+            return;
+        } else {
+            economicImage.style.display = "none";
+            economicChartCanvas.style.display = "block";
+            economicNote.style.display = "block";
+        }
+
+        let chartData = {
+            labels: [2007, 2008, 2013],
+            datasets: []
+        };
+
+        if (selectedValue === "gdp") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [23081.195, 24119.895, 25335.326],
+                    borderColor: russiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Georgia',
+                    data: [9174.358, 9297.166, 11544.515],
+                    borderColor: georgiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Note: GDP data is displayed in millions of USD.";
+        } else if (selectedValue === "gni") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [23081.195, 24119.895, 25335.326],
+                    borderColor: russiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Georgia',
+                    data: [9174.358, 9297.166, 11544.515],
+                    borderColor: georgiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Note: GNI data is displayed in millions of USD.";
+        } else if (selectedValue === "manufacturing") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [15.114633, 14.933155, 11.057306],
+                    borderColor: russiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Georgia',
+                    data: [10.948111, 10.443043, 9.511735],
+                    borderColor: georgiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Note: Manufacturing data is displayed as a percentage of GDP.";
+        } else if (selectedValue === "exchange_rate") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [25.57, 24.81, 31.86],
+                    borderColor: russiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Georgia',
+                    data: [1.670491667, 1.490791667, 1.66335],
+                    borderColor: georgiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Note: The exchange rate is displayed as equivalent to USD.";
+        } else if (selectedValue === "inflation_rate") {
+            chartData.datasets = [
+                {
+                    label: 'Russia',
+                    data: [9.007298, 14.110767, 6.7537103],
+                    borderColor: russiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Georgia',
+                    data: [9.244898, 9.999488, -0.51205844],
+                    borderColor: georgiaColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Note: The inflation rate is shown as the annual percentage change.";
+        }
+
+        economicChart = new Chart(economicChartCanvas, {
+            type: "line",
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: {
+                            padding: 20
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 10
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false
+                        },
+                        ticks: {
+                            padding: 10
+                        }
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 25,
+                        bottom: 20,
+                        right: 15,
+                        top: 10
+                    }
+                }
+            }
+        });
+    });
+
+    economicImage.style.display = "block";
+    economicChartCanvas.style.display = "none";
+    economicNote.style.display = "none";
+});
+
+</script>
+<script src="your-script-file.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const impactBoxes = document.querySelector('.impact-boxes');
+        const warHeader = document.querySelector('.war-header');
+        const socialIcons = document.querySelector('.social-icons'); // Sosyal medya ikonları
+        const warText = document.querySelector('.war-text'); // Yazının bulunduğu ana alan
+    
+        if (impactBoxes && warHeader) {
+            // impact-boxes'ı war-header'ın üstüne taşı
+            warHeader.parentNode.insertBefore(impactBoxes, warHeader);
+        }
+
+        if (socialIcons && warText) {
+            // Sosyal medya ikonlarını war-text'in altına taşı
+            warText.parentNode.insertBefore(socialIcons, warText.nextSibling);
+        }
+    });
+</script>
+<div class="index-footer">
+    <p>© 2024 Scars of Wars - All Rights Reserved</p>
+  </div>
+</body>
+</html>

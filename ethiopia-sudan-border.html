@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethiopia - Sudan Border Conflicts - Scars Of Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <body id="body" data-page="ethiopiaSudanConflict"> 
+        
+    <div class="topnav">
+        <!-- WARS linkini dropdown ile değiştiriyoruz -->
+        <div class="nav-item dropdown">
+            <button class="dropbtn">
+                <i class="fa fa-crosshairs"></i>
+                WARS
+            </button>
+            <div class="dropdown-content">
+                <a href="gulf-war.html">Gulf War (1990-1991)</a>
+                <a href="afghan-war.html">Afghan War (2001-2021)</a>
+                <a href="iraq--war.html">Iraq War (2003-2011)</a>
+                <a href="saudi-arabia-yemen-war.html">Saudi Arabia-Yemen War (2015-2023)</a>
+                <a href="first-intifada.html">First Intifada (1987-1993)</a>
+                <a href="second-intifada.html">Second Intifada (2000-2005)</a>
+                <a href="gaza-war.html">Gaza War (2008-2009)</a>
+                <a href="current-gaza-conflict.html">Current Gaza Conflict (2012-2023)</a>
+                <a href="georgia-intervention.html">Russian Intervention in Georgia (2008)</a>
+                <a href="nagorno-karabakh-war.html">Nagorno-Karabakh War (2020)</a>
+                <a href="kosovo-war.html">Kosovo War (1998-1999)</a>
+                <a href="india-pakistan-conflicts.html">India-Pakistan Border Conflicts (2019)</a>
+                <a href="china-india-border.html">China-India Border Conflict (2020-2023)</a>
+                <a href="ethiopia-sudan-border.html">Ethiopia-Sudan Border Conflicts (2020-2023)</a>
+                <a href="russia-crimea-war.html">Russia-Crimea War (2014)</a>
+                <a href="russia-ukraine-war.html">Russia-Ukraine War (2022-2023)</a>
+            </div>
+        </div>
+
+        <a class="active" href="index.html"><i class="fa fa-shield"></i> SCARS OF WARS </a>
+        <a href="aboutus.html"><i class="fa fa-leaf"></i> ABOUT US</a>
+ <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/ybsbakircayedu/" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://x.com/ybs_bakircayedu" target="_blank" class="fa fa-twitter"></a>
+            <a href="https://www.instagram.com/ybs_bakircayedu/" target="_blank" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/in/bakircay-ybs/?originalSubdomain=tr" target="_blank" class="fa fa-linkedin"></a>
+            <a href="#" id="download-pdf" class="fa fa-file-pdf-o" title="Download as PDF"></a>
+           </div>
+    </div>
+    <h1 class="main-header">Ethiopia - Sudan Border Conflicts</h1>
+
+    <!-- Main Content -->
+    <div class="war-content">
+        <!-- War Header -->
+        <div class="war-header">
+            <div class="war-main-content">
+                <div class="war-text">
+                    <h2 style="text-align: right; font-size: 28px;   font-family: 'Cinzel', sans-serif;">PROGRESSION OF THE WAR</h2>                   
+                    <p>The Ethiopia-Sudan Border Conflicts (2020-2023) stemmed from long-standing disputes over the Al-Fashaga region, a fertile area claimed by both countries. The conflict escalated in late 2020 as Ethiopian forces became preoccupied with the Tigray War, allowing Sudanese forces to assert control over parts of the disputed territory. This led to skirmishes and casualties on both sides.</p> 
+                    <p>The situation was further complicated by the construction of Ethiopia's Grand Renaissance Dam (GERD) on the Blue Nile, which Sudan views as a threat to its water security. Negotiations over both the border and the GERD have been tense, with little progress made despite international mediation efforts.</p> 
+                    <p>The border conflict underscores the broader challenges of regional stability in the Horn of Africa, with both nations facing internal and external pressures. While full-scale war has been avoided, the lack of resolution keeps the risk of further clashes high.</p>
+                </div>
+                    <img src="kunye_2/ethiopia.jpg" alt="Ethiopia Künye">
+                </div>
+            </div>
+        <!-- Impact Boxes -->
+        <div class="impact-boxes">
+            <!-- Structural Damage Box -->
+            <div class="impact-box structural-damage">
+                <h2>Structural Damage</h2>
+                <div class="city-selector">
+                    <select id="citySelect">
+                        <option value="">Select a City</option>
+                        <option value="humera">Ethiopia - Humera</option>
+                        <option value="kabkabiya">Sudan - Kabkabiya</option>
+                    </select>
+                    <!-- Varsayılan Görsel BURAYA-->
+<div class="city-image" id="cityImageContainer">
+    <img id="cityImage" src="images/humera_ethiopia_sudan_war_gu╠êncel.jpg" alt="City Preview">
+</div>     
+                </div>
+                <div class="slider-wrapper">
+                    <!-- Default Message -->
+                    <div class="default-message">
+                        Please select a city to see the impact
+                    </div>
+                    <div class="city-info-box"></div>
+
+                          <!-- Humera Slider -->
+                    <div class="container slider-humera" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/ethiopia-sudan-border-conflicts/humera/ETHIOPIASUDANBORDERCONFLICTS_HUMERA_PRE.jpg" alt="Humera Before">
+                                <div class="label label-before">Before War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/ethiopia-sudan-border-conflicts/humera/ETHIOPIASUDANBORDERCONFLICTS_HUMERA_POST.jpg" alt="Humera After">
+                                <div class="label label-after">After War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>   
+                    <!-- Kabkabiya Slider -->
+                    <div class="container slider-kabkabiya" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/ethiopia-sudan-border-conflicts/kabkabiya/ETHIOPIASUDANBORDERCONFLICTS_KABKABIYA_PRE.jpg" alt="Kabkabiya Before">
+                                <div class="label label-before">Before War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/ethiopia-sudan-border-conflicts/kabkabiya/ETHIOPIASUDANBORDERCONFLICTS_KABKABIYA_POST.jpg" alt="Kabkabiya After">
+                                <div class="label label-after">After War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+               <!-- Casualties Box -->
+               <div class="impact-box casualties">
+                <h2>Environmental Damage</h2>
+                <div class="casualties-content">
+                    <select id="casualtiesSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="population">Population</option>
+                        <option value="migration">Migration</option>
+                        <option value="median_age">Median Age</option>
+                        <option value="life_expectancy">Life Expectancy</option>
+                        <option value="human_rights_score">Human Rights Score</option>
+                        <option value="female_population_percent">Female Population Percent</option>
+                        <option value="death_rate">Death Rate</option>
+                        <option value="birth_rate">Birth Rate</option>
+                    </select>
+                     <!-- Görseli kapsayan div -->
+        <div class="environmental-image-container">
+            <img id="environmentalImage" src="images/çevre.jpg" alt="Environmental Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+        </div>
+                    <canvas id="casualtiesChart"></canvas>
+                    <p class="chart-note casualties-note"></p>
+                </div>
+            </div>
+            
+            <!-- Economic Impact Box -->
+            <div class="impact-box economic">
+                <h2>Economic Damage</h2>
+                <div class="economic-content">
+                    <select id="economicSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="gdp">GDP</option>
+                        <option value="gni">GNI</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="exchange_rate">Exchange Rate</option>
+                        <option value="inflation_rate">Inflation Rate</option>
+                    </select>
+                    <div class="economic-image-container">
+                        <img id="economicImage" src="images/ekonomik.webp" alt="Economic Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+                    </div>
+                    <canvas id="economicChart" style="height:400px; width:100%;"></canvas>
+                    <p id="economicNote" class="chart-note"></p>  <!-- Yeni eklenen satır -->
+                </div>
+            </div>
+            <a href="scars_of_wars_project-compressed-converted.html" target="_blank" class="methodology-link">*Methodology</a>
+        </div>
+        </div>
+    </div>
+
+ <!-- Scripts -->
+ <script src="script.js"></script>
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const citySelect = document.getElementById("citySelect"); // Şehir seçim kutusu
+        const cityImageContainer = document.getElementById("cityImageContainer"); // Varsayılan görselin bulunduğu div
+        const sliders = document.querySelectorAll(".container"); // Tüm slider'lar
+    
+        // Sliderları gizlemek için yardımcı fonksiyon
+        function hideAllSliders() {
+            sliders.forEach((slider) => {
+                slider.style.display = "none"; // Tüm slider'ları gizle
+            });
+        }
+    
+        // Şehir değişimi sırasında çalışacak olay
+        citySelect.addEventListener("change", function () {
+            const selectedCity = citySelect.value.trim(); // Seçilen şehri al ve boşlukları temizle
+    
+            if (selectedCity === "") {
+                // Eğer şehir seçilmediyse
+                cityImageContainer.style.display = "block"; // Varsayılan görseli göster
+                hideAllSliders(); // Slider'ları gizle
+            } else {
+                // Şehir seçildiyse
+                cityImageContainer.style.display = "none"; // Varsayılan görseli gizle
+                hideAllSliders(); // Tüm slider'ları önce gizle
+    
+                const activeSlider = document.querySelector(`.slider-${selectedCity}`); // İlgili slider'ı bul
+                if (activeSlider) {
+                    activeSlider.style.display = "block"; // İlgili slider'ı göster
+                } else {
+                    console.error(`Slider for city "${selectedCity}" not found!`); // Eğer slider yoksa konsolda hata göster
+                }
+            }
+        });
+    
+        // Sayfa yüklendiğinde varsayılan görseli göster ve slider'ları gizle
+        cityImageContainer.style.display = "block";
+        hideAllSliders();
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const downloadBtn = document.getElementById('download-pdf');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Target the specific content for the PDF
+                const content = document.querySelector('.war-content');
+                const { jsPDF } = window.jspdf;
+
+                // Generate the PDF using html2canvas
+                html2canvas(content, { scale: 2 }).then(canvas => {
+                    const pdf = new jsPDF('p', 'mm', 'a4');
+                    const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+                    const imgWidth = 210; // A4 width in mm
+                    const pageHeight = 297; // A4 height in mm
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                    let position = 0;
+
+                    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+
+                    // Add more pages if the content overflows
+                    if (imgHeight > pageHeight) {
+                        let remainingHeight = imgHeight - pageHeight;
+                        while (remainingHeight > 0) {
+                            position = position - pageHeight;
+                            pdf.addPage();
+                            pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                            remainingHeight -= pageHeight;
+                        }
+                    }
+
+                    pdf.save('Ethiopia-Sudan-Border.pdf');
+                });
+            });
+        }
+    });
+//GRAFİK
+document.addEventListener("DOMContentLoaded", function () {
+    const casualtiesSelect = document.getElementById("casualtiesSelect");
+    const chartCanvas = document.getElementById("casualtiesChart");
+    const chartNote = document.querySelector(".casualties-note");
+    const environmentalImage = document.getElementById("environmentalImage");
+
+    let myChart = null;
+
+    // Başlangıçta görseli göster, grafik ve notları gizle
+    environmentalImage.style.display = "block";
+    chartCanvas.style.display = "none";
+    chartNote.style.display = "none";
+
+    casualtiesSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        if (selectedValue === "") {
+            // Seçim yapılmadığında görseli göster
+            environmentalImage.style.display = "block";
+            chartCanvas.style.display = "none";
+            chartNote.style.display = "none";
+            return;
+        } else {
+            // Seçim yapıldığında görseli gizle, grafik ve notları göster
+            environmentalImage.style.display = "none";
+            chartCanvas.style.display = "block";
+            chartNote.style.display = "block";
+        }
+
+        let chartData = {
+            labels: [2019, 2020, 2022],
+            datasets: []
+        };
+
+        if (selectedValue === "population") {
+            chartData.datasets = [
+                {
+                    label: 'Ethiopia',
+                    data: [11.0, 11.0, 12.0],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Sudan',
+                    data: [45.0, 46.0, 49.0],
+                    borderColor: 'rgb(255, 159, 64)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Population data is displayed in millions.";
+        } else if (selectedValue === "migration") {
+            chartData.datasets = [
+                {
+                    label: 'Ethiopia',
+                    data: [-10807.0, 38866.0, -11996.0],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Sudan',
+                    data: [-39491.0, -65933.0, -26668.0],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Migration data is displayed in thousands of people.";
+        } else if (selectedValue === "median_age") {
+            chartData.datasets = [
+                {
+                    label: 'Ethiopia',
+                    data: [17.926, 18.129, 18.528],
+                    borderColor: 'rgb(153, 102, 255)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Sudan',
+                    data: [17.675, 17.817, 18.12],
+                    borderColor: 'rgb(255, 206, 86)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Age data is displayed in years.";
+        } else if (selectedValue === "life_expectancy") {
+            chartData.datasets = [
+                {
+                    label: 'Ethiopia',
+                    data: [65.8377, 65.3705, 65.2667],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Sudan',
+                    data: [65.8755, 65.6136, 64.9748],
+                    borderColor: 'rgb(255, 99, 71)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: Life expectancy is displayed in years.";
+        } else if (selectedValue === "human_rights_score") {
+            chartData.datasets = [
+                {
+                    label: 'Ethiopia',
+                    data: [0.56, 0.54, 0.38],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Sudan',
+                    data: [0.36, 0.32, 0.24],
+                    borderColor: 'rgb(255, 159, 64)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: The human rights score is displayed on a scale from 0 to 1.";
+        } else if (selectedValue === "female_population_percent") {
+            chartData.datasets = [
+                {
+                    label: 'Ethiopia',
+                    data: [49.72, 49.73, 49.76],
+                    borderColor: 'rgb(153, 102, 255)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Sudan',
+                    data: [50.02, 50.02, 50.04],
+                    borderColor: 'rgb(255, 206, 86)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: The female population is displayed as a percentage.";
+        } else if (selectedValue === "death_rate") {
+            chartData.datasets = [
+                {
+                    label: 'Ethiopia',
+                    data: [6.481, 6.403, 6.093],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Sudan',
+                    data: [6.549, 6.786, 6.522],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: The death rate is displayed as the number per 1,000 people.";
+        } else if (selectedValue === "birth_rate") {
+            chartData.datasets = [
+                {
+                    label: 'Ethiopia',
+                    data: [33.549, 33.31, 32.413],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: 'Sudan',
+                    data: [34.909, 34.48, 33.535],
+                    borderColor: 'rgb(255, 159, 64)',
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            chartNote.innerText = "Note: The birth rate is displayed as the number per 1,000 people.";
+        }
+
+       
+        myChart = new Chart(chartCanvas, {
+                    type: 'line',
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                callbacks: {
+                                    label: function (context) {
+                                        let label = context.dataset.label + ': ';
+                                        if (selectedValue === 'population') {
+                                            return label + context.parsed.y + ' Million';
+                                        }
+                                        return label + context.parsed.y;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                position: 'left',
+                                grid: {
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            }
+                        },
+                        layout: {
+                            padding: {
+                                left: 25,
+                                bottom: 20,
+                                right: 15,
+                                top: 10
+                            }
+                        }
+                    }
+                });
+            });
+        });
+
+//ECONOMIC
+document.addEventListener("DOMContentLoaded", function () {
+    const economicSelect = document.getElementById("economicSelect");
+    const economicChartCanvas = document.getElementById("economicChart");
+    const economicNote = document.getElementById("economicNote");
+    const economicImage = document.getElementById("economicImage");
+
+    let economicChart = null;
+
+    const ethiopiaColor = 'rgb(75, 192, 192)';
+    const sudanColor = 'rgb(255, 159, 64)';
+
+    economicSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        if (economicChart) {
+            economicChart.destroy();
+        }
+
+        if (selectedValue === "") {
+            economicImage.style.display = "block";
+            economicChartCanvas.style.display = "none";
+            economicNote.style.display = "none";
+            return;
+        } else {
+            economicImage.style.display = "none";
+            economicChartCanvas.style.display = "block";
+            economicNote.style.display = "block";
+        }
+
+        let chartData = {
+            labels: [2019, 2020, 2022],
+            datasets: []
+        };
+
+        if (selectedValue === "gdp") {
+            chartData.datasets = [
+            {
+                label: 'Ethiopia',
+                data: [2168.38, 2240.351, 2368.7583],
+                borderColor: ethiopiaColor,
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Sudan',
+                data: [3939.3396, 3658.4724, 3514.7659],
+                borderColor: sudanColor,
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            economicNote.innerText = "Note: GDP data is displayed in millions of USD.";
+
+        }
+        else if (selectedValue === "gni") {
+            chartData.datasets = [
+            {
+                label: 'Ethiopia',
+                data: [2168.38, 2240.351, 2368.7583],
+                borderColor: ethiopiaColor,
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Sudan',
+                data: [3939.3396, 3658.4724, 3514.7659],
+                borderColor: sudanColor,
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            economicNote.innerText = "Note: GNI data is displayed in millions of USD.";
+
+        }
+        else if (selectedValue === "manufacturing") {
+            chartData.datasets = [
+            {
+                label: 'Ethiopia',
+                data: [5.594369, 5.303281, 4.240702],
+                borderColor: ethiopiaColor,
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Sudan',
+                data: [6.4, 7.4, 1.6],
+                borderColor: sudanColor,
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            economicNote.innerText = "Note: Manufacturing data is displayed as a percentage of GDP.";
+
+        }
+        else if (selectedValue === "exchange_rate") {
+            chartData.datasets = [
+            {
+                label: 'Ethiopia',
+                data: [29.06975, 34.9271654, 51.75621503],
+                borderColor: ethiopiaColor,
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Sudan',
+                data: [45.76704545, 53.9960119, 546.75885],
+                borderColor: sudanColor,
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            economicNote.innerText = "Note: The exchange rate is displayed as equivalent to USD.";
+
+             }
+        else if (selectedValue === "inflation_rate") {
+            chartData.datasets = [
+            {
+                label: 'Ethiopia',
+                data: [15.809632, 20.356346, 33.88988],
+                borderColor: ethiopiaColor,
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            },
+            {
+                label: 'Sudan',
+                data: [50.994053, 163.25778, 138.80846],
+                borderColor: sudanColor,
+                tension: 0.1,
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }
+        ];
+            economicNote.innerText = "Note: The inflation rate is shown as the annual percentage change.";
+    
+        }
+
+        
+        economicChart = new Chart(economicChartCanvas, {
+                    type: "line",
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: "bottom",
+                                labels: {
+                                    padding: 20
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                grid: {
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            }
+                        },
+                        layout: {
+                            padding: {
+                                left: 25,
+                                bottom: 20,
+                                right: 15,
+                                top: 10
+                            }
+                        }
+                    }
+                });
+            });
+        
+            economicImage.style.display = "block";
+            economicChartCanvas.style.display = "none";
+            economicNote.style.display = "none";
+        });
+</script>
+<script src="your-script-file.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const impactBoxes = document.querySelector('.impact-boxes');
+        const warHeader = document.querySelector('.war-header');
+        const socialIcons = document.querySelector('.social-icons'); // Sosyal medya ikonları
+        const warText = document.querySelector('.war-text'); // Yazının bulunduğu ana alan
+    
+        if (impactBoxes && warHeader) {
+            // impact-boxes'ı war-header'ın üstüne taşı
+            warHeader.parentNode.insertBefore(impactBoxes, warHeader);
+        }
+
+        if (socialIcons && warText) {
+            // Sosyal medya ikonlarını war-text'in altına taşı
+            warText.parentNode.insertBefore(socialIcons, warText.nextSibling);
+        }
+    });
+</script>
+<div class="index-footer">
+    <p>© 2024 Scars of Wars - All Rights Reserved</p>
+  </div>
+</body>
+</html>

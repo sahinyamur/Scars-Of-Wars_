@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudi Arabia/Yemen War- Scars Of Wars</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <body id="body" data-page="saudiYemenWar"> 
+        
+    <div class="topnav">
+        <!-- WARS linkini dropdown ile değiştiriyoruz -->
+        <div class="nav-item dropdown">
+            <button class="dropbtn">
+                <i class="fa fa-crosshairs"></i>
+                WARS
+            </button>
+            <div class="dropdown-content">
+                <a href="gulf-war.html">Gulf War (1990-1991)</a>
+                <a href="afghan-war.html">Afghan War (2001-2021)</a>
+                <a href="iraq--war.html">Iraq War (2003-2011)</a>
+                <a href="saudi-arabia-yemen-war.html">Saudi Arabia-Yemen War (2015-2023)</a>
+                <a href="first-intifada.html">First Intifada (1987-1993)</a>
+                <a href="second-intifada.html">Second Intifada (2000-2005)</a>
+                <a href="gaza-war.html">Gaza War (2008-2009)</a>
+                <a href="current-gaza-conflict.html">Current Gaza Conflict (2012-2023)</a>
+                <a href="georgia-intervention.html">Russian Intervention in Georgia (2008)</a>
+                <a href="nagorno-karabakh-war.html">Nagorno-Karabakh War (2020)</a>
+                <a href="kosovo-war.html">Kosovo War (1998-1999)</a>
+                <a href="india-pakistan-conflicts.html">India-Pakistan Border Conflicts (2019)</a>
+                <a href="china-india-border.html">China-India Border Conflict (2020-2023)</a>
+                <a href="ethiopia-sudan-border.html">Ethiopia-Sudan Border Conflicts (2020-2023)</a>
+                <a href="russia-crimea-war.html">Russia-Crimea War (2014)</a>
+                <a href="russia-ukraine-war.html">Russia-Ukraine War (2022-2023)</a>
+            </div>
+        </div>
+
+        <a class="active" href="index.html"><i class="fa fa-shield"></i> SCARS OF WARS </a>
+        <a href="aboutus.html"><i class="fa fa-leaf"></i> ABOUT US</a>
+ <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/ybsbakircayedu/" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://x.com/ybs_bakircayedu" target="_blank" class="fa fa-twitter"></a>
+            <a href="https://www.instagram.com/ybs_bakircayedu/" target="_blank" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/in/bakircay-ybs/?originalSubdomain=tr" target="_blank" class="fa fa-linkedin"></a>
+            <a href="#" id="download-pdf" class="fa fa-file-pdf-o" title="Download as PDF"></a>
+           </div>
+    </div>
+    <h1 class="main-header">Saudi Arabia - Yemen War</h1>
+    <!-- Main Content -->
+    <div class="war-content">
+        <!-- War Header -->
+        <div class="war-header">
+            <div class="war-main-content">
+                <div class="war-text">
+                    <h2 style="text-align: right; font-size: 28px;   font-family: 'Cinzel', sans-serif;">PROGRESSION OF THE WAR</h2>                   
+                    <p>The Saudi Arabia-Yemen War (2015-2023) began as Saudi Arabia led a coalition to counter the Houthi rebels, who had taken over the Yemeni capital, Sana’a, and large parts of the country. The conflict emerged from Yemen's political instability following the Arab Spring, which had already left the nation deeply divided along sectarian and tribal lines. The Houthis, backed by Iran, aimed to overthrow the internationally recognized government of President Abdrabbuh Mansur Hadi.</p> 
+                    <p>The war quickly escalated into a regional proxy conflict, with Saudi Arabia and its allies conducting airstrikes and blockades, while the Houthis responded with ground offensives and missile strikes on Saudi territory. The humanitarian crisis intensified as food, medicine, and water supplies dwindled due to the blockade and ongoing violence, leading to what the United Nations described as one of the world's worst humanitarian catastrophes. Millions faced starvation, cholera outbreaks, and displacement.</p> 
+                    <p>As of 2023, the conflict remains unresolved, with sporadic ceasefires offering brief relief but no permanent peace. While Saudi Arabia has signaled a desire to de-escalate the conflict, the complex network of actors and grievances in Yemen poses significant challenges to achieving a sustainable resolution.</p>
+                </div>
+                <img src="kunye_2/saudi.jpg" alt="Yemen War Künye">
+            </div>
+        </div>
+        <!-- Impact Boxes -->
+        <div class="impact-boxes">
+            <!-- Structural Damage Box -->
+            <div class="impact-box structural-damage">
+                <h2>Structural Damage</h2>
+                <div class="city-selector">
+                    <select id="citySelect">
+                        <option value="">Select a City</option>
+                        <option value="sanaa">Saudi Arabia - Sanaa</option>
+                        <option value="najran">Yemen - Najran</option>
+                    </select>
+                    <!-- Varsayılan Görsel BURAYA-->
+<div class="city-image" id="cityImageContainer">
+    <img id="cityImage" src="images/najrab_saudiarabia_war_gu╠êncel.jpg" alt="City Preview">
+</div>  
+                </div>
+                <div class="slider-wrapper">
+                    <!-- Default Message -->
+                    <div class="default-message">
+                        Please select a city to see the impact
+                    </div>
+                    <div class="city-info-box"></div>
+
+                    <!-- Sanaa Slider -->
+                    <div class="container slider-sanaa" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/saudi-arabia-yemen-war/sanaa/SAUDIARABIAYEMENWAR_SANAA_PRE.jpg" alt="Sanaa Before">
+                                <div class="label label-before">Before War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/saudi-arabia-yemen-war/sanaa/SAUDIARABIAYEMENWAR_SANAA_POST.jpg" alt="Sanaa After">
+                                <div class="label label-after">After War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Najran Slider -->
+                    <div class="container slider-najran" style="display: none;">
+                        <div class="image-container">
+                            <div class="image-before">
+                                <img src="images/saudi-arabia-yemen-war/najran/SAUDIARABIAYEMENWAR_NAJRAN_PRE.jpg" alt="Najran Before">
+                                <div class="label label-before">Before War</div>
+                            </div>
+                            <div class="image-after">
+                                <img src="images/saudi-arabia-yemen-war/najran/SAUDIARABIAYEMENWAR_NAJRAN_POST.jpg" alt="Najran After">
+                                <div class="label label-after">After War</div>
+                            </div>
+                            <div class="slider">
+                                <div class="slider-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Casualties Box -->
+            <div class="impact-box casualties">
+                <h2>Environmental Damage</h2>
+                <div class="casualties-content">
+                    <select id="casualtiesSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="population">Population</option>
+                        <option value="migration">Migration</option>
+                        <option value="median_age">Median Age</option>
+                        <option value="life_expectancy">Life Expectancy</option>
+                        <option value="human_rights_score">Human Rights Score</option>
+                        <option value="female_population_percent">Female Population Percent</option>
+                        <option value="death_rate">Death Rate</option>
+                        <option value="birth_rate">Birth Rate</option>
+                    </select>
+                       <!-- Görseli kapsayan div -->
+        <div class="environmental-image-container">
+            <img id="environmentalImage" src="images/çevre.jpg" alt="Environmental Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+        </div>
+                    <canvas id="casualtiesChart"></canvas>
+                    <p class="chart-note casualties-note"></p>
+                </div>
+            </div>
+            
+            <!-- Economic Impact Box -->
+            <div class="impact-box economic">
+                <h2>Economic Damage</h2>
+                <div class="economic-content">
+                    <select id="economicSelect">
+                        <option value="">Select an indicator</option>
+                        <option value="gdp">GDP</option>
+                        <option value="gni">GNI</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="exchange_rate">Exchange Rate</option>
+                        <option value="inflation_rate">Inflation Rate</option>
+                    </select>
+                    <div class="economic-image-container">
+                        <img id="economicImage" src="images/ekonomik.webp" alt="Economic Impact Visual" style="display: none; width: 100%; max-height: 400px;">
+                    </div>
+                    <canvas id="economicChart" style="height:400px; width:100%;"></canvas>
+                    <p id="economicNote" class="chart-note"></p>  <!-- Yeni eklenen satır -->
+                </div>
+            </div>
+            <a href="scars_of_wars_project-compressed-converted.html" target="_blank" class="methodology-link">*Methodology</a>
+        </div>
+        </div>
+    </div>
+ <!-- Scripts -->
+ <script src="script.js"></script>
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const citySelect = document.getElementById("citySelect"); // Şehir seçim kutusu
+        const cityImageContainer = document.getElementById("cityImageContainer"); // Varsayılan görselin bulunduğu div
+        const sliders = document.querySelectorAll(".container"); // Tüm slider'lar
+    
+        // Sliderları gizlemek için yardımcı fonksiyon
+        function hideAllSliders() {
+            sliders.forEach((slider) => {
+                slider.style.display = "none"; // Tüm slider'ları gizle
+            });
+        }
+    
+        // Şehir değişimi sırasında çalışacak olay
+        citySelect.addEventListener("change", function () {
+            const selectedCity = citySelect.value.trim(); // Seçilen şehri al ve boşlukları temizle
+    
+            if (selectedCity === "") {
+                // Eğer şehir seçilmediyse
+                cityImageContainer.style.display = "block"; // Varsayılan görseli göster
+                hideAllSliders(); // Slider'ları gizle
+            } else {
+                // Şehir seçildiyse
+                cityImageContainer.style.display = "none"; // Varsayılan görseli gizle
+                hideAllSliders(); // Tüm slider'ları önce gizle
+    
+                const activeSlider = document.querySelector(`.slider-${selectedCity}`); // İlgili slider'ı bul
+                if (activeSlider) {
+                    activeSlider.style.display = "block"; // İlgili slider'ı göster
+                } else {
+                    console.error(`Slider for city "${selectedCity}" not found!`); // Eğer slider yoksa konsolda hata göster
+                }
+            }
+        });
+    
+        // Sayfa yüklendiğinde varsayılan görseli göster ve slider'ları gizle
+        cityImageContainer.style.display = "block";
+        hideAllSliders();
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const downloadBtn = document.getElementById('download-pdf');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Target the specific content for the PDF
+                const content = document.querySelector('.war-content');
+                const { jsPDF } = window.jspdf;
+
+                // Generate the PDF using html2canvas
+                html2canvas(content, { scale: 2 }).then(canvas => {
+                    const pdf = new jsPDF('p', 'mm', 'a4');
+                    const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+                    const imgWidth = 210; // A4 width in mm
+                    const pageHeight = 297; // A4 height in mm
+                    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                    let position = 0;
+
+                    pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+
+                    // Add more pages if the content overflows
+                    if (imgHeight > pageHeight) {
+                        let remainingHeight = imgHeight - pageHeight;
+                        while (remainingHeight > 0) {
+                            position = position - pageHeight;
+                            pdf.addPage();
+                            pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                            remainingHeight -= pageHeight;
+                        }
+                    }
+
+                    pdf.save('Saudi Arabi-Yemen War.pdf');
+                });
+            });
+        }
+    });
+//GRAFİK
+document.addEventListener("DOMContentLoaded", function () {
+    const downloadBtn = document.getElementById('download-pdf');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Target the specific content for the PDF
+            const content = document.querySelector('.war-content');
+            const { jsPDF } = window.jspdf;
+
+            // Generate the PDF using html2canvas
+            html2canvas(content, { scale: 2 }).then(canvas => {
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 297; // A4 height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                let position = 0;
+
+                pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+
+                // Add more pages if the content overflows
+                if (imgHeight > pageHeight) {
+                    let remainingHeight = imgHeight - pageHeight;
+                    while (remainingHeight > 0) {
+                        position = position - pageHeight;
+                        pdf.addPage();
+                        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+                        remainingHeight -= pageHeight;
+                    }
+                }
+
+                pdf.save('Gulf_War.pdf');
+            });
+        });
+    }
+});
+//GRAFİK
+document.addEventListener("DOMContentLoaded", function () {
+    const casualtiesSelect = document.getElementById("casualtiesSelect");
+    const chartCanvas = document.getElementById("casualtiesChart").getContext("2d");
+    const chartNote = document.querySelector(".casualties-note");
+    const environmentalImage = document.getElementById("environmentalImage");
+
+    let myChart = null;
+
+    // Predefined dataset configurations for different indicators
+    const chartDataConfig = {
+        population: {
+            labels: [2014, 2015, 2022],
+            datasets: [
+                { label: "Saudi Arabia", data: [28.9, 29.9, 32.1], borderColor: "rgb(54, 162, 235)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 },
+                { label: "Yemen", data: [30.2, 31.1, 38.2], borderColor: "rgb(255, 99, 132)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 }
+            ],
+            note: "Note: Population data are shown in millions."
+        },
+        migration: {
+            labels: [2014, 2015, 2022],
+            datasets: [
+                { label: "Saudi Arabia", data: [469144, 465292, 977072], borderColor: "rgb(54, 162, 235)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 },
+                { label: "Yemen", data: [15764, -9883, -10448], borderColor: "rgb(255, 99, 132)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 }
+            ],
+            note: "Note: Migration data are shown in terms of people."
+        },
+        life_expectancy: {
+            labels: [2014, 2015, 2022],
+            datasets: [
+                { label: "Saudi Arabia", data: [76.7573, 76.9185, 76.936], borderColor: "rgb(54, 162, 235)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 },
+                { label: "Yemen", data: [67.3842, 65.8734, 63.7534], borderColor: "rgb(255, 99, 132)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 }
+            ],
+            note: "Note: Life expectancy is shown in years."
+        },
+        female_population_percent: {
+            labels: [2014, 2015, 2022],
+            datasets: [
+                { label: "Saudi Arabia", data: [42.84, 42.67, 42.37], borderColor: "rgb(54, 162, 235)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 },
+                { label: "Yemen", data: [49.36, 49.37, 49.48], borderColor: "rgb(255, 99, 132)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 }
+            ],
+            note: "Note: Female population is shown as a percentage."
+        },
+        death_rate: {
+            labels: [2014, 2015, 2022],
+            datasets: [
+                { label: "Saudi Arabia", data: [2.392, 2.266, 2.57], borderColor: "rgb(54, 162, 235)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 },
+                { label: "Yemen", data: [5.29, 5.773, 5.232], borderColor: "rgb(255, 99, 132)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 }
+            ],
+            note: "Note: Death rate is shown in numbers per 1000 people."
+        },
+        birth_rate: {
+            labels: [2014, 2015, 2022],
+            datasets: [
+                { label: "Saudi Arabia", data: [19.822, 19.405, 15.217], borderColor: "rgb(54, 162, 235)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 },
+                { label: "Yemen", data: [35.738, 35.938, 35.407], borderColor: "rgb(255, 99, 132)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 }
+            ],
+            note: "Note: Birth rate is measured as the number of births per 1,000 people annually."
+        },
+        human_rights_score: {
+            labels: [2014, 2015, 2022],
+            datasets: [
+                { label: "Saudi Arabia", data: [0.18, 0.17, 0.16], borderColor: "rgb(54, 162, 235)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 },
+                { label: "Yemen", data: [0.33, 0.15, 0.17], borderColor: "rgb(255, 99, 132)", tension: 0.1, pointRadius: 5, pointHoverRadius: 7 }
+            ],
+            note: "Note: Human Rights Score is on a scale of 0-1, where higher values indicate better scores."
+        }
+    };
+
+    casualtiesSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        // Destroy existing chart if it exists
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        // Show or hide chart and image based on selection
+        if (!selectedValue || !chartDataConfig[selectedValue]) {
+            environmentalImage.style.display = "block";
+            chartCanvas.canvas.style.display = "none";
+            chartNote.innerText = "Select an indicator to view the chart.";
+            return;
+        }
+
+        environmentalImage.style.display = "none";
+        chartCanvas.canvas.style.display = "block";
+
+        // Get the data for the selected chart
+        const { labels, datasets, note } = chartDataConfig[selectedValue];
+
+        // Initialize the chart
+       
+        myChart = new Chart(chartCanvas, {
+                    type: 'line',
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                callbacks: {
+                                    label: function (context) {
+                                        let label = context.dataset.label + ': ';
+                                        if (selectedValue === 'population') {
+                                            return label + context.parsed.y + ' Million';
+                                        }
+                                        return label + context.parsed.y;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                position: 'left',
+                                grid: {
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            }
+                        },
+                        layout: {
+                            padding: {
+                                left: 25,
+                                bottom: 20,
+                                right: 15,
+                                top: 10
+                            }
+                        }
+                    }
+                });
+            });
+        });
+//ECONOMIC
+document.addEventListener("DOMContentLoaded", function () {
+    const economicSelect = document.getElementById("economicSelect");
+    const economicChartCanvas = document.getElementById("economicChart");
+    const economicNote = document.getElementById("economicNote");
+    const economicImage = document.getElementById("economicImage"); // Görsel için eklendi
+
+    let economicChart = null;
+
+    // Sabit renkler
+    const saudiColor = "rgb(255, 99, 132)"; // Suudi Arabistan için sabit renk
+    const yemenColor = "rgb(54, 162, 235)"; // Yemen için sabit renk
+
+    economicSelect.addEventListener("change", function () {
+        const selectedValue = this.value;
+
+        // Mevcut grafik varsa yok et
+        if (economicChart) {
+            economicChart.destroy();
+            economicChart = null; // Grafik nesnesini sıfırla
+        }
+
+        // Eğer "Select an indicator" seçiliyse
+        if (selectedValue === "") {
+            // Görseli göster, grafik ve notları gizle
+            economicImage.style.display = "block";
+            economicChartCanvas.style.display = "none";
+            economicNote.style.display = "none";
+            return; // Daha fazla işlem yapma
+        }
+
+        // Görseli gizle, grafik ve notları göster
+        economicImage.style.display = "none";
+        economicChartCanvas.style.display = "block";
+        economicNote.style.display = "block";
+
+        let chartData = {
+            labels: [2014, 2015, 2022],
+            datasets: []
+        };
+
+        if (selectedValue === "gdp") {
+            chartData.datasets = [
+                {
+                    label: "Saudi Arabia",
+                    data: [48399.965, 49700.97, 50620.438],
+                    borderColor: saudiColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Yemen",
+                    data: [2582.8699, 1659.4031, 1105.7634],
+                    borderColor: yemenColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "GDP data is shown in millions of USD.";
+        } else if (selectedValue === "gni") {
+            chartData.datasets = [
+                {
+                    label: "Saudi Arabia",
+                    data: [48399.965, 49700.97, 50620.438],
+                    borderColor: saudiColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Yemen",
+                    data: [2582.8699, 1659.4031, 1105.7634],
+                    borderColor: yemenColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "GNI data is shown in millions of USD.";
+        } else if (selectedValue === "manufacturing") {
+            chartData.datasets = [
+                {
+                    label: "Saudi Arabia",
+                    data: [10.831796, 12.833633, 14.435882],
+                    borderColor: saudiColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Yemen",
+                    data: [null, null, null],
+                    borderColor: yemenColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "Production data is shown as a percentage of GDP.";
+        } else if (selectedValue === "exchange_rate") {
+            chartData.datasets = [
+                {
+                    label: "Saudi Arabia",
+                    data: [3.75, 3.75, 3.75],
+                    borderColor: saudiColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Yemen",
+                    data: [214.89, 230.8333333, 1115.002387],
+                    borderColor: yemenColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "The exchange rate is shown in USD equivalent.";
+        } else if (selectedValue === "inflation_rate") {
+            chartData.datasets = [
+                {
+                    label: "Saudi Arabia",
+                    data: [2.2362902, 1.2060732, 2.4740736],
+                    borderColor: saudiColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                },
+                {
+                    label: "Yemen",
+                    data: [8.104726, 12.1, 29.15],
+                    borderColor: yemenColor,
+                    tension: 0.1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }
+            ];
+            economicNote.innerText = "The inflation rate is shown as an annual percentage change.";
+        }
+
+        
+        economicChart = new Chart(economicChartCanvas, {
+                    type: "line",
+                    data: chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: "bottom",
+                                labels: {
+                                    padding: 20
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                grid: {
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            }
+                        },
+                        layout: {
+                            padding: {
+                                left: 25,
+                                bottom: 20,
+                                right: 15,
+                                top: 10
+                            }
+                        }
+                    }
+                });
+            });
+        
+            economicImage.style.display = "block";
+            economicChartCanvas.style.display = "none";
+            economicNote.style.display = "none";
+        });
+
+</script>
+<script src="your-script-file.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const impactBoxes = document.querySelector('.impact-boxes');
+        const warHeader = document.querySelector('.war-header');
+        const socialIcons = document.querySelector('.social-icons'); // Sosyal medya ikonları
+        const warText = document.querySelector('.war-text'); // Yazının bulunduğu ana alan
+    
+        if (impactBoxes && warHeader) {
+            // impact-boxes'ı war-header'ın üstüne taşı
+            warHeader.parentNode.insertBefore(impactBoxes, warHeader);
+        }
+
+        if (socialIcons && warText) {
+            // Sosyal medya ikonlarını war-text'in altına taşı
+            warText.parentNode.insertBefore(socialIcons, warText.nextSibling);
+        }
+    });
+</script>
+<div class="index-footer">
+    <p>© 2024 Scars of Wars - All Rights Reserved</p>
+  </div>
+</body>
+</html>
